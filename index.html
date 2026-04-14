@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Flight from Ashenmoor</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f5f4f0;color:#1a1a18;padding:16px;max-width:700px;margin:0 auto}
+h2{font-size:18px;font-weight:600;margin-bottom:10px}
+h3{font-size:15px;font-weight:600;margin-bottom:7px}
+p{font-size:14px;color:#5f5e5a;line-height:1.6}
+.card{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.btn{background:transparent;border:1px solid #b4b2a9;border-radius:8px;padding:8px 15px;font-size:13px;cursor:pointer;color:#1a1a18;transition:background .15s}
+.btn:hover{background:#f1efe8}
+.btn:active{transform:scale(.98)}
+.btnp{background:#3c3489;border-color:#3c3489;color:#eeedfe}
+.btnp:hover{background:#534ab7}
+.btnd{background:#a32d2d;border-color:#a32d2d;color:#fcebeb}
+.btnd:hover{background:#e24b4a}
+.btn:disabled,.btnp:disabled{opacity:.4;cursor:not-allowed}
+.sel-card{border:1px solid #e0ddd6;border-radius:8px;padding:9px 12px;cursor:pointer;transition:border .15s,background .15s}
+.sel-card:hover{background:#f8f7f3}
+.sel-card.on{border:2px solid #534ab7;background:#eeedfe}
+.sel-card .nm{font-size:13px;font-weight:600}
+.sel-card .ds{font-size:11px;color:#888780;margin-top:2px;line-height:1.4}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.srow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.slbl{font-size:12px;color:#888780;width:80px;flex-shrink:0}
+.bwrap{flex:1;height:8px;background:#f1efe8;border-radius:4px;overflow:hidden}
+.bfill{height:8px;border-radius:4px;transition:width .4s}
+.sval{font-size:12px;font-weight:600;width:28px;text-align:right}
+.ebox{border-left:3px solid #534ab7;padding:9px 13px;background:#f8f7f3;border-radius:0 8px 8px 0;margin-bottom:9px;font-size:13px;line-height:1.6}
+.ebox.danger{border-color:#a32d2d}
+.ebox.success{border-color:#0f6e56}
+.ebox.combat{border-color:#ba7517}
+.loge{font-size:12px;padding:3px 0;border-bottom:1px solid #f0ede6;color:#888780;line-height:1.4}
+.loge:last-child{border:none}
+.dcrd{border:1px solid #e0ddd6;border-radius:8px;padding:9px 12px;cursor:pointer;margin-bottom:7px;display:flex;gap:10px;align-items:flex-start;transition:background .15s}
+.dcrd:hover{background:#f8f7f3}
+.dcrd.on{border:2px solid #534ab7}
+.comb{background:#fff;border:1px solid #e0ddd6;border-radius:10px;padding:12px 14px}
+.cname{font-size:13px;font-weight:600;margin-bottom:7px}
+.hpt{height:8px;background:#f1efe8;border-radius:4px;overflow:hidden;margin-bottom:5px}
+.hpf{height:8px;border-radius:4px;transition:width .4s}
+.arow{display:flex;gap:4px;margin-bottom:4px}
+.apip{width:11px;height:11px;border-radius:3px;border:1px solid #d3d1c7;background:#f1efe8}
+.apip.on{background:#534ab7;border-color:#534ab7}
+.stag{font-size:10px;padding:2px 6px;border-radius:5px;font-weight:600;display:inline-block;margin:1px}
+.sb{background:#e6f1fb;color:#0c447c}
+.sr{background:#fcebeb;color:#791f1f}
+.sg{background:#eaf3de;color:#27500a}
+.sy{background:#faeeda;color:#633806}
+.spu{background:#eeedfe;color:#3c3489}
+.abt{background:#fff;border:1px solid #d3d1c7;border-radius:7px;padding:7px 9px;cursor:pointer;text-align:left;font-family:system-ui,sans-serif;color:#1a1a18;width:100%}
+.abt:hover:not(:disabled){background:#f8f7f3}
+.abt:disabled{opacity:.4;cursor:not-allowed}
+.abt:active:not(:disabled){transform:scale(.98)}
+.abt .an{font-size:12px;font-weight:600;display:block;margin-bottom:1px}
+.abt .am{font-size:10px;color:#888780}
+.clog{background:#f8f7f3;border-radius:7px;padding:7px 10px;margin-top:7px;max-height:90px;overflow-y:auto}
+.clog .cl{font-size:11px;padding:2px 0;border-bottom:1px solid #ece9e2;color:#888780;line-height:1.4}
+.clog .cl:last-child{border:none}
+.clog .cl.pl{color:#1a1a18}
+.clog .cl.en{color:#a32d2d}
+.clog .cl.sp{color:#534ab7}
+.prog-bar{height:5px;background:#e0ddd6;border-radius:3px;margin-bottom:10px;overflow:hidden}
+.prog-fill{height:5px;background:#534ab7;border-radius:3px;transition:width .5s}
+.section{margin-bottom:12px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const RACES=[
+  {id:'human',name:'Human',desc:'Adaptable. +20 food.',bonus:{food:20}},
+  {id:'elf',name:'High Elf',desc:'Keen. +10 morale.',bonus:{morale:10}},
+  {id:'dwarf',name:'Dwarf',desc:'Hardy. +15 health.',bonus:{health:15}},
+  {id:'halfling',name:'Halfling',desc:'Lucky. +15 gold.',bonus:{gold:15}},
+  {id:'tiefling',name:'Tiefling',desc:'Feared. +5 morale.',bonus:{morale:5}},
+  {id:'orc',name:'Half-Orc',desc:'Strong. +20 health.',bonus:{health:20}},
+];
+const CLASSES=[
+  {id:'knight',name:'Knight',desc:'+10 HP, +5 gold.',bonus:{health:10,gold:5},cid:'knight'},
+  {id:'wizard',name:'Wizard',desc:'+5 morale, -10 food.',bonus:{morale:5,food:-10},cid:'wizard'},
+  {id:'ranger',name:'Ranger',desc:'+15 food, forager.',bonus:{food:15},forage:.2,cid:'ranger'},
+  {id:'cleric',name:'Cleric',desc:'+5 HP, +10 morale.',bonus:{health:5,morale:10},cid:'cleric'},
+  {id:'rogue',name:'Rogue',desc:'+20 gold, -5 food.',bonus:{gold:20,food:-5},cid:'rogue'},
+  {id:'bard',name:'Bard',desc:'+20 morale, -5 food.',bonus:{morale:20,food:-5},cid:'bard'},
+];
+const PROFESSIONS=[
+  {id:'merchant',name:'Merchant',desc:'+30 gold, -10 food.',bonus:{gold:30,food:-10}},
+  {id:'soldier',name:'Veteran',desc:'+10 HP, -10 gold.',bonus:{health:10,gold:-10}},
+  {id:'healer',name:'Healer',desc:'+10 food, +5 morale.',bonus:{food:10,morale:5}},
+  {id:'scout',name:'Scout',desc:'+5 food, +5 gold.',bonus:{food:5,gold:5}},
+  {id:'farmer',name:'Farmer',desc:'+30 food, -10 gold.',bonus:{food:30,gold:-10}},
+  {id:'noble',name:'Noble',desc:'+20 gold, +5 morale, -15 food.',bonus:{gold:20,morale:5,food:-15}},
+];
+const DESTINATIONS=[
+  {id:'ironhold',name:'Ironhold Citadel',icon:'🏰',dist:5,danger:3,terrain:'Mountain',color:'#534ab7',dx:200,dy:72},
+  {id:'greenfen',name:'Greenfen Wilds',icon:'🌲',dist:4,danger:2,terrain:'Forest',color:'#0f6e56',dx:300,dy:128},
+  {id:'saltport',name:'Saltport',icon:'⛵',dist:6,danger:2,terrain:'Coastal',color:'#185fa5',dx:42,dy:165},
+  {id:'dawnspire',name:'Dawnspire Sanctum',icon:'🔯',dist:7,danger:4,terrain:'Desert',color:'#ba7517',dx:318,dy:270},
+  {id:'underveil',name:'The Underveil',icon:'🕳',dist:3,danger:5,terrain:'Underground',color:'#888780',dx:196,dy:255},
+];
+const CCLASSES={
+  knight:{hp:32,ap:3,actions:[
+    {id:'a',name:'Iron Slash',dmg:[8,14],cost:1,desc:'Sword swing',eff:null},
+    {id:'b',name:'Shield Wall',dmg:[0,0],cost:1,desc:'Block next hit',eff:{t:'shield',v:8,tg:'self'}},
+    {id:'c',name:'Brutal Charge',dmg:[14,20],cost:2,desc:'40% stun',eff:{t:'stun',ch:.4,tg:'enemy'}},
+    {id:'d',name:'Rally Cry',dmg:[0,0],cost:2,desc:'Heal 8 HP',eff:{t:'heal',v:8,tg:'self'}},
+  ]},
+  wizard:{hp:22,ap:4,actions:[
+    {id:'a',name:'Arcane Bolt',dmg:[10,16],cost:1,desc:'Magic missile',eff:null},
+    {id:'b',name:'Flame Curse',dmg:[4,8],cost:1,desc:'Burn 3/turn×3',eff:{t:'burn',v:3,turns:3,tg:'enemy'}},
+    {id:'c',name:'Nova Blast',dmg:[18,26],cost:3,desc:'Massive spell',eff:null},
+    {id:'d',name:'Blink Step',dmg:[0,0],cost:1,desc:'Dodge next hit',eff:{t:'shield',v:99,tg:'self'}},
+  ]},
+  ranger:{hp:26,ap:3,actions:[
+    {id:'a',name:'Quick Shot',dmg:[7,11],cost:1,desc:'Arrow volley',eff:null},
+    {id:'b',name:'Poison Arrow',dmg:[5,9],cost:1,desc:'Bleed 2/t×4',eff:{t:'bleed',v:2,turns:4,tg:'enemy'}},
+    {id:'c',name:'Twin Strike',dmg:[6,10],cost:2,desc:'2 hits',hits:2,eff:null},
+    {id:'d',name:'Snare Trap',dmg:[3,6],cost:1,desc:'75% stun',eff:{t:'stun',ch:.75,tg:'enemy'}},
+  ]},
+  cleric:{hp:28,ap:3,actions:[
+    {id:'a',name:'Divine Smite',dmg:[9,14],cost:1,desc:'Holy strike',eff:null},
+    {id:'b',name:'Heal',dmg:[0,0],cost:1,desc:'Restore 12 HP',eff:{t:'heal',v:12,tg:'self'}},
+    {id:'c',name:'Blessing',dmg:[0,0],cost:2,desc:'Shield+regen',eff:{t:'multi',effs:[{t:'shield',v:8,tg:'self'},{t:'regen',v:3,turns:3,tg:'self'}]}},
+    {id:'d',name:'Wrath',dmg:[15,22],cost:2,desc:'Holy blast',eff:null},
+  ]},
+  rogue:{hp:24,ap:4,actions:[
+    {id:'a',name:'Backstab',dmg:[9,15],cost:1,desc:'Vital strike',eff:null},
+    {id:'b',name:'Smoke Bomb',dmg:[0,0],cost:1,desc:'Shield 12+regen',eff:{t:'multi',effs:[{t:'shield',v:12,tg:'self'},{t:'regen',v:3,turns:3,tg:'self'}]}},
+    {id:'c',name:'Combo Strike',dmg:[4,7],cost:1,desc:'3 rapid hits',hits:3,eff:null},
+    {id:'d',name:'Execute',dmg:[0,0],cost:2,desc:'Bonus dmg <40% HP',spec:'exec'},
+  ]},
+  bard:{hp:24,ap:4,actions:[
+    {id:'a',name:'Sonic Strike',dmg:[8,13],cost:1,desc:'Sound blast',eff:null},
+    {id:'b',name:'Battle Song',dmg:[0,0],cost:1,desc:'Regen+heal',eff:{t:'multi',effs:[{t:'regen',v:4,turns:3,tg:'self'},{t:'heal',v:4,tg:'self'}]}},
+    {id:'c',name:'Mockery',dmg:[5,9],cost:1,desc:'40% stun',eff:{t:'stun',ch:.4,tg:'enemy'}},
+    {id:'d',name:'Crescendo',dmg:[14,20],cost:2,desc:'Grand finale',eff:null},
+  ]},
+};
+const ENEMIES=[
+  {name:'Bandit Captain',icon:'⚔',hp:28,ap:2,loot:{g:15,h:0,f:0,s:'15 gold looted'},actions:[
+    {id:'a',name:'Heavy Slash',dmg:[8,13],cost:1,eff:null},
+    {id:'b',name:'Blade Flurry',dmg:[5,9],cost:2,hits:2,eff:null},
+    {id:'c',name:'Intimidate',dmg:[2,4],cost:1,eff:{t:'stun',ch:.3,tg:'enemy'}},
+  ]},
+  {name:'Dark Cultist',icon:'🔮',hp:22,ap:3,loot:{g:8,h:5,f:0,s:'8 gold + 5 HP'},actions:[
+    {id:'a',name:'Hex Bolt',dmg:[9,14],cost:1,eff:{t:'burn',v:2,turns:2,tg:'enemy'}},
+    {id:'b',name:'Life Drain',dmg:[6,10],cost:1,eff:{t:'heal',v:5,tg:'self'}},
+    {id:'c',name:'Dark Ritual',dmg:[14,20],cost:2,eff:null},
+  ]},
+  {name:'Stone Troll',icon:'🪨',hp:40,ap:2,loot:{g:5,h:0,f:15,s:'5 gold + 15 food'},actions:[
+    {id:'a',name:'Boulder Smash',dmg:[10,16],cost:1,eff:{t:'stun',ch:.25,tg:'enemy'}},
+    {id:'b',name:'Stone Regen',dmg:[0,0],cost:1,eff:{t:'heal',v:8,tg:'self'}},
+    {id:'c',name:'Rock Hurl',dmg:[12,18],cost:2,eff:null},
+  ]},
+  {name:'Shadow Wraith',icon:'👻',hp:20,ap:3,loot:{g:0,h:12,f:0,s:'+12 HP from ectoplasm'},actions:[
+    {id:'a',name:'Soul Rend',dmg:[7,12],cost:1,eff:{t:'bleed',v:3,turns:3,tg:'enemy'}},
+    {id:'b',name:'Phase Shift',dmg:[0,0],cost:1,eff:{t:'shield',v:99,tg:'self'}},
+    {id:'c',name:'Banshee Wail',dmg:[11,17],cost:2,eff:{t:'stun',ch:.5,tg:'enemy'}},
+  ]},
+  {name:'Wyvern Scout',icon:'🐉',hp:34,ap:2,loot:{g:10,h:0,f:10,s:'10 gold + 10 food'},actions:[
+    {id:'a',name:'Venom Bite',dmg:[8,12],cost:1,eff:{t:'bleed',v:2,turns:4,tg:'enemy'}},
+    {id:'b',name:'Talon Swipe',dmg:[11,17],cost:1,eff:null},
+    {id:'c',name:'Fire Breath',dmg:[7,11],cost:2,eff:{t:'burn',v:4,turns:2,tg:'enemy'}},
+  ]},
+];
+const EVENTS=[
+  {type:'danger',t:'Cursed Crossroads',d:'A magical hex blocks the road.',ch:['Push through','Detour','Dispel'],ef:[{health:-10,morale:-10},{food:-15},{morale:5,health:-5}]},
+  {type:'danger',t:'Sickness',d:'Fever sweeps the party.',ch:['Rest','Press on','Treat'],ef:[{health:-20,food:-5,days:2},{health:-30},{health:-10}]},
+  {type:'danger',t:'River Flood',d:'The ford is deadly.',ch:['Cross','Find bridge','Wait'],ef:[{health:-15,food:-5},{gold:-10,days:1},{food:-10,days:2}]},
+  {type:'warn',t:'Overpriced Waystation',d:'Supplies at extortionate prices.',ch:['Buy','Barter','Steal'],ef:[{gold:-25,food:20},{gold:-15,food:10},{food:20,morale:-10}]},
+  {type:'warn',t:'Enemy Checkpoint',d:'Soldiers loyal to your pursuers.',ch:['Pay bribe','Forge papers','Sneak around'],ef:[{gold:-20},{morale:-10},{days:1,food:-5}]},
+  {type:'warn',t:'Equipment Failure',d:'A wagon wheel breaks.',ch:['Repair','Lighten load','Push on'],ef:[{gold:-15,days:1},{food:-15},{health:-10}]},
+  {type:'success',t:'Abandoned Farmstead',d:'The pantry is still stocked.',ch:['Take all','Take some'],ef:[{food:30,morale:5},{food:15,morale:10}]},
+  {type:'success',t:'Sacred Spring',d:'Healing waters hidden in the hills.',ch:['Drink and rest','Bottle it'],ef:[{health:25,morale:10,days:1},{health:10,morale:5}]},
+  {type:'success',t:'Fellow Refugees',d:'Survivors share what they have.',ch:['Travel together','Accept and part'],ef:[{morale:15,food:10,days:1},{morale:10,food:15}]},
+];
+
+let W='title';
+let sel={race:null,cls:null,prof:null,dest:null};
+let J={};
+let C={};
+
+const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const cl=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+function go(s){W=s;render();}
+
+function initJ(){
+  const r=RACES.find(x=>x.id===sel.race),c=CLASSES.find(x=>x.id===sel.cls),
+        p=PROFESSIONS.find(x=>x.id===sel.prof),d=DESTINATIONS.find(x=>x.id===sel.dest);
+  let b={health:100,food:50,gold:40,morale:70};
+  [r.bonus,c.bonus,p.bonus].forEach(bx=>Object.entries(bx).forEach(([k,v])=>{b[k]=(b[k]||0)+v;}));
+  Object.keys(b).forEach(k=>{b[k]=cl(b[k],0,k==='gold'?999:100);});
+  J={race:sel.race,cls:sel.cls,prof:sel.prof,dest:sel.dest,
+     health:b.health,food:b.food,gold:b.gold,morale:b.morale,
+     day:1,daysLeft:d.dist*3+3,maxDays:d.dist*3+3,
+     log:['Your flight from Ashenmoor begins!'],ev:null,
+     robj:r,cobj:c,pobj:p,dobj:d,alive:true,arrived:false};
+}
+
+function hc(v,m){const p=v/m;return p>.5?'#1d9e75':p>.25?'#ef9f27':'#e24b4a';}
+function sbar(lbl,v,m){const p=Math.round(v/m*100);return`<div class="srow"><span class="slbl">${lbl}</span><div class="bwrap"><div class="bfill" style="width:${p}%;background:${hc(v,m)}"></div></div><span class="sval">${Math.round(v)}</span></div>`;}
+
+function applyEff(e){
+  if(e.health)J.health=cl(J.health+e.health,0,100);
+  if(e.food)J.food=cl(J.food+e.food,0,120);
+  if(e.gold)J.gold=cl(J.gold+e.gold,0,999);
+  if(e.morale)J.morale=cl(J.morale+e.morale,0,100);
+  if(e.days)J.daysLeft=Math.max(1,J.daysLeft+e.days);
+}
+function advDay(){
+  J.day++;J.daysLeft--;
+  J.food=Math.max(0,J.food-8);
+  if(J.food===0)J.health=Math.max(0,J.health-12);
+  if(J.morale<30)J.health=Math.max(0,J.health-4);
+  if(J.food>40)J.morale=cl(J.morale+2,0,100);
+  if((J.cls==='ranger'||J.prof==='farmer')&&Math.random()<.2){J.food=cl(J.food+12,0,120);J.log.push('Foraging finds hidden food.');}
+  const cc=J.dobj.danger*.08;
+  if(Math.random()<cc){J.ev={type:'combat',enemy:ENEMIES[ri(0,ENEMIES.length-1)]};}
+  else{const pool=EVENTS.filter(()=>Math.random()<.5);J.ev=(pool.length&&Math.random()<.65)?pool[ri(0,pool.length-1)]:null;}
+}
+function checkEnd(){
+  if(J.health<=0){J.alive=false;return true;}
+  if(J.morale<=0){J.alive=false;return true;}
+  if(J.daysLeft<=0){J.arrived=true;return true;}
+  return false;
+}
+function chooseEv(i){
+  applyEff(J.ev.ef[i]);
+  J.log.push(J.ev.t+': chose "'+J.ev.ch[i]+'"');
+  J.ev=null;advDay();
+  if(checkEnd())go('end');else go('travel');
+}
+function fleeFromCombat(){
+  J.health=cl(J.health-20,0,100);J.gold=cl(J.gold-15,0,999);
+  J.log.push('Fled from '+J.ev.enemy.name+'. Lost HP and gold.');
+  J.ev=null;advDay();
+  if(checkEnd())go('end');else go('travel');
+}
+function enterCombat(){
+  const edef=J.ev.enemy,cid=J.cobj.cid||'knight',cdef=CCLASSES[cid];
+  C={
+    player:{name:J.cobj.name,icon:J.cobj.name[0],hp:cdef.hp,maxHp:cdef.hp,ap:cdef.ap,maxAp:cdef.ap,statuses:[],shield:0,actions:cdef.actions,isPlayer:true},
+    enemy:{name:edef.name,icon:edef.icon,hp:edef.hp,maxHp:edef.hp,ap:edef.ap,maxAp:edef.ap,statuses:[],shield:0,actions:edef.actions,loot:edef.loot,isPlayer:false},
+    turn:'player',log:[],round:1,done:false,won:false
+  };
+  C.log.unshift({t:'Round 1! '+edef.name+' blocks your path!',c:'sp'});
+  go('combat');
+}
+function afterCombat(){
+  J.ev=null;
+  if(checkEnd()){go('end');return;}
+  advDay();
+  if(checkEnd())go('end');else go('travel');
+}
+
+function applyStatus(tgt,eff){
+  if(!eff)return;
+  const a=e=>{
+    if(e.t==='burn')tgt.statuses.push({type:'burn',v:e.v,turns:e.turns});
+    if(e.t==='bleed')tgt.statuses.push({type:'bleed',v:e.v,turns:e.turns});
+    if(e.t==='regen')tgt.statuses.push({type:'regen',v:e.v,turns:e.turns});
+    if(e.t==='stun'&&Math.random()<e.ch)tgt.statuses.push({type:'stun',turns:1});
+    if(e.t==='shield')tgt.shield=Math.max(tgt.shield,e.v);
+    if(e.t==='heal')tgt.hp=cl(tgt.hp+e.v,0,tgt.maxHp);
+  };
+  if(eff.t==='multi')eff.effs.forEach(a);else a(eff);
+}
+function dealDmg(tgt,raw){
+  let d=raw;
+  if(tgt.shield>0){d=Math.max(0,d-tgt.shield);tgt.shield=0;}
+  tgt.hp=cl(tgt.hp-d,0,tgt.maxHp);
+  return d;
+}
+function tickSt(unit){
+  const msgs=[];
+  unit.statuses=unit.statuses.filter(s=>{
+    if(s.type==='burn'||s.type==='bleed'){const d=dealDmg(unit,s.v);msgs.push({t:unit.name+' takes '+d+' from '+s.type+'.',c:unit.isPlayer?'en':'pl'});s.turns--;return s.turns>0;}
+    if(s.type==='regen'){unit.hp=cl(unit.hp+s.v,0,unit.maxHp);msgs.push({t:unit.name+' regens '+s.v+' HP.',c:'sp'});s.turns--;return s.turns>0;}
+    return true;
+  });
+  return msgs;
+}
+function clog(t,c){C.log.unshift({t,c:c||''});}
+function doAction(aid){
+  if(C.turn!=='player'||C.done)return;
+  const p=C.player,e=C.enemy;
+  if(p.statuses.find(s=>s.type==='stun')){clog('You are stunned! Turn lost.','sp');p.statuses=p.statuses.filter(s=>s.type!=='stun');endPT();return;}
+  const act=p.actions.find(a=>a.id===aid);
+  if(!act||p.ap<act.cost)return;
+  p.ap-=act.cost;
+  let tot=0;
+  for(let i=0;i<(act.hits||1);i++){
+    if(act.spec==='exec'){const bon=e.hp<e.maxHp*.4?Math.floor(e.maxHp*.35):0;tot+=dealDmg(e,ri(12,18)+bon);}
+    else if(act.dmg[1]>0)tot+=dealDmg(e,ri(act.dmg[0],act.dmg[1]));
+  }
+  if(tot>0)clog('You use '+act.name+' — '+tot+' dmg!','pl');
+  else clog('You use '+act.name+'.','pl');
+  if(act.eff){applyStatus(act.eff.tg==='self'?p:e,act.eff);}
+  if(e.hp<=0){endCombatFn(true);return;}
+  if(p.ap<=0)endPT();else render();
+}
+function endPT(){
+  tickSt(C.enemy).forEach(m=>clog(m.t,m.c));
+  if(C.enemy.hp<=0){endCombatFn(true);return;}
+  C.turn='enemy';render();
+  setTimeout(doET,850);
+}
+function doET(){
+  const p=C.player,e=C.enemy;
+  e.ap=e.maxAp;
+  if(e.statuses.find(s=>s.type==='stun')){clog(e.name+' is stunned!','sp');e.statuses=e.statuses.filter(s=>s.type!=='stun');endET();return;}
+  while(e.ap>0){
+    const avail=e.actions.filter(a=>a.cost<=e.ap);
+    if(!avail.length)break;
+    const act=avail[ri(0,avail.length-1)];
+    e.ap-=act.cost;
+    let tot=0;
+    for(let i=0;i<(act.hits||1);i++){if(act.dmg&&act.dmg[1]>0)tot+=dealDmg(p,ri(act.dmg[0],act.dmg[1]));}
+    if(tot>0)clog(e.name+' uses '+act.name+' — '+tot+' dmg!','en');
+    else clog(e.name+' uses '+act.name+'.','en');
+    if(act.eff)applyStatus(act.eff.tg==='self'?e:p,act.eff);
+    if(p.hp<=0){endCombatFn(false);return;}
+  }
+  endET();
+}
+function endET(){
+  tickSt(C.player).forEach(m=>clog(m.t,m.c));
+  if(C.player.hp<=0){endCombatFn(false);return;}
+  C.round++;C.turn='player';C.player.ap=C.player.maxAp;
+  clog('— Round '+C.round+' —','sp');
+  render();
+}
+function endCombatFn(won){
+  C.done=true;C.won=won;
+  if(won){
+    clog('Victory! '+C.enemy.name+' falls.','sp');
+    const l=C.enemy.loot;
+    if(l){J.gold=cl(J.gold+l.g,0,999);J.health=cl(J.health+l.h,0,100);J.food=cl(J.food+l.f,0,120);J.log.push('Combat won! '+l.s);}
+  } else {
+    clog('You were defeated!','en');
+    J.health=Math.max(0,J.health-30);J.morale=Math.max(0,J.morale-20);
+    J.log.push('Combat lost. Fled wounded (-30 HP, -20 morale).');
+  }
+  render();
+}
+
+function combUnit(u,showAP){
+  const pct=Math.round(u.hp/u.maxHp*100),col=hc(u.hp,u.maxHp);
+  let stags='';
+  if(u.shield>0&&u.shield<99)stags+='<span class="stag sb">Shield '+u.shield+'</span> ';
+  if(u.shield>=99)stags+='<span class="stag sb">Dodge ready</span> ';
+  u.statuses.forEach(s=>{
+    if(s.type==='burn')stags+='<span class="stag sy">Burn '+s.turns+'t</span> ';
+    if(s.type==='bleed')stags+='<span class="stag sr">Bleed '+s.turns+'t</span> ';
+    if(s.type==='regen')stags+='<span class="stag sg">Regen '+s.turns+'t</span> ';
+    if(s.type==='stun')stags+='<span class="stag spu">Stunned</span> ';
+  });
+  let apH='';
+  if(showAP)for(let i=0;i<u.maxAp;i++)apH+='<div class="apip'+(i<u.ap?' on':'')+'"></div>';
+  return'<div class="comb"><div class="cname">'+u.icon+' '+u.name+'</div>'
+    +'<div style="font-size:11px;color:#888780;margin-bottom:3px;display:flex;justify-content:space-between"><span>HP</span><span>'+Math.round(u.hp)+'/'+u.maxHp+'</span></div>'
+    +'<div class="hpt"><div class="hpf" style="width:'+pct+'%;background:'+col+'"></div></div>'
+    +(showAP?'<div class="arow">'+apH+'</div>':'')
+    +'<div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:3px;min-height:16px">'+stags+'</div>'
+    +'</div>';
+}
+
+function miniMap(){
+  const d=J.dobj,prog=Math.round((1-J.daysLeft/J.maxDays)*100);
+  const px=Math.round(196+(d.dx-196)*prog/100),py=Math.round(195+(d.dy-195)*prog/100);
+  return'<svg width="100%" viewBox="0 0 360 310" style="display:block;border-radius:8px;border:1px solid #e0ddd6;margin-bottom:10px">'
+    +'<rect width="360" height="310" fill="#b8cfe8" opacity=".12"/>'
+    +'<path d="M40,35 Q90,18 160,28 Q240,22 295,35 Q335,42 345,75 Q355,115 350,170 Q342,215 320,248 Q295,275 255,288 Q210,298 165,295 Q120,298 90,282 Q55,265 35,232 Q18,198 15,155 Q12,105 40,35Z" fill="#d4c9a8" opacity=".65"/>'
+    +'<polygon points="165,32 158,55 172,55" fill="#9e9078"/>'
+    +'<polygon points="180,28 172,52 188,52" fill="#b4a888"/>'
+    +'<polygon points="195,30 187,53 203,53" fill="#9e9078"/>'
+    +'<polygon points="210,28 202,52 218,52" fill="#b4a888"/>'
+    +'<polygon points="180,28 175,40 185,40" fill="#e8e4d8"/>'
+    +'<polygon points="195,30 190,42 200,42" fill="#e8e4d8"/>'
+    +'<circle cx="308" cy="118" r="17" fill="#3a6b2e"/><circle cx="328" cy="108" r="13" fill="#2e5525"/>'
+    +'<circle cx="345" cy="120" r="15" fill="#3a6b2e"/><circle cx="322" cy="134" r="13" fill="#4a7a38"/>'
+    +'<path d="M195,52 Q202,80 198,115 Q194,145 188,175 Q183,200 178,240" fill="none" stroke="#7aa8c8" stroke-width="1.5" opacity=".45"/>'
+    +'<path d="M196,195 Q198,160 197,130 Q198,103 196,75" fill="none" stroke="#7a6850" stroke-width="1.2" stroke-dasharray="4 3" opacity=".5"/>'
+    +'<path d="M196,195 Q225,180 258,165 Q285,153 302,140" fill="none" stroke="#4a7a38" stroke-width="1.2" stroke-dasharray="4 3" opacity=".5"/>'
+    +'<path d="M196,195 Q165,192 135,188 Q100,183 70,176 Q52,170 40,165" fill="none" stroke="#185fa5" stroke-width="1.2" stroke-dasharray="4 3" opacity=".5"/>'
+    +'<path d="M196,195 Q212,210 230,222 Q255,238 275,253 Q296,264 316,272" fill="none" stroke="#ba7517" stroke-width="1.2" stroke-dasharray="4 3" opacity=".5"/>'
+    +'<path d="M196,195 Q196,215 196,232 Q196,244 196,255" fill="none" stroke="#888780" stroke-width="1.2" stroke-dasharray="3 4" opacity=".5"/>'
+    +'<circle cx="'+d.dx+'" cy="'+d.dy+'" r="8" fill="'+d.color+'" opacity=".25"/>'
+    +'<circle cx="'+d.dx+'" cy="'+d.dy+'" r="5" fill="'+d.color+'"/>'
+    +'<text x="'+d.dx+'" y="'+(d.dy+15)+'" text-anchor="middle" font-size="9" fill="'+d.color+'" font-family="system-ui" font-weight="600">'+d.name+'</text>'
+    +'<circle cx="196" cy="195" r="6" fill="#e24b4a" opacity=".25"/>'
+    +'<circle cx="196" cy="195" r="4" fill="#e24b4a"/>'
+    +'<circle cx="'+px+'" cy="'+py+'" r="5" fill="#eeedfe" stroke="#534ab7" stroke-width="1.5"/>'
+    +'<rect x="4" y="4" width="78" height="17" rx="4" fill="white" opacity=".8"/>'
+    +'<text x="9" y="15" font-size="9" font-family="system-ui" fill="#888780">Day '+J.day+' · '+prog+'% there</text>'
+    +'</svg>';
+}
+
+const SCREENS={
+  title(){
+    return'<div style="text-align:center;padding:1.5rem 0 1rem">'
+      +'<div style="font-size:36px;margin-bottom:10px">⚔</div>'
+      +'<h2 style="font-size:24px;margin-bottom:8px">The Flight from Ashenmoor</h2>'
+      +'<p style="margin-bottom:1.5rem;max-width:380px;margin-left:auto;margin-right:auto">The city burns. Dark fire crests the horizon. You must flee — but where?</p>'
+      +'<button class="btn btnp" onclick="go(\'build\')">Begin Your Flight</button>'
+      +'</div>';
+  },
+  build(){
+    const g3=(items,key)=>'<div class="g3">'+items.map(i=>'<div class="sel-card'+(sel[key]===i.id?' on':'')+'" onclick="sel[\''+key+'\']=\''+i.id+'\';render()"><div class="nm">'+i.name+'</div><div class="ds">'+i.desc+'</div></div>').join('')+'</div>';
+    const ok=sel.race&&sel.cls&&sel.prof&&sel.dest;
+    return'<div class="section"><h3>Race</h3>'+g3(RACES,'race')+'</div>'
+      +'<div class="section"><h3>Class</h3>'+g3(CLASSES,'cls')+'</div>'
+      +'<div class="section"><h3>Profession</h3>'+g3(PROFESSIONS,'prof')+'</div>'
+      +'<div class="section"><h3>Destination</h3>'
+      +DESTINATIONS.map(d=>'<div class="dcrd'+(sel.dest===d.id?' on':'')+'" onclick="sel.dest=\''+d.id+'\';render()">'
+        +'<div style="font-size:20px">'+d.icon+'</div>'
+        +'<div><div style="font-size:13px;font-weight:600">'+d.name+' <span style="font-size:10px;padding:2px 6px;border-radius:5px;background:'+d.color+'22;color:'+d.color+'">'+d.terrain+'</span></div>'
+        +'<div style="font-size:11px;color:#888780;margin-top:2px">Dist '+'★'.repeat(d.dist)+'☆'.repeat(7-d.dist)+' · Danger <span style="color:#a32d2d">'+'★'.repeat(d.danger)+'☆'.repeat(5-d.danger)+'</span></div></div>'
+        +'</div>').join('')
+      +'</div>'
+      +'<div style="text-align:center"><button class="btn btnp" '+(ok?'':'disabled ')+'onclick="'+(ok?'initJ();go(\'travel\')':'')+'">'
+      +'Begin the Flight</button>'
+      +(!ok?'<div style="font-size:11px;color:#888780;margin-top:6px">Select all four to continue.</div>':'')
+      +'</div>';
+  },
+  travel(){
+    const prog=Math.round((1-J.daysLeft/J.maxDays)*100),ev=J.ev;
+    let evH='';
+    if(ev){
+      if(ev.type==='combat'){
+        evH='<div><div class="ebox combat"><strong>⚔ Ambush!</strong> A '+ev.enemy.icon+' <strong>'+ev.enemy.name+'</strong> blocks your path!</div>'
+          +'<div style="display:flex;gap:8px;flex-wrap:wrap">'
+          +'<button class="btn btnd" onclick="enterCombat()">Fight</button>'
+          +'<button class="btn" onclick="fleeFromCombat()">Flee (−20 HP, −15 gold)</button>'
+          +'</div></div>';
+      } else {
+        evH='<div><div class="ebox '+ev.type+'"><strong>'+ev.t+'</strong><br>'+ev.d+'</div>'
+          +'<div style="display:flex;gap:7px;flex-wrap:wrap">'
+          +ev.ch.map((c,i)=>'<button class="btn" onclick="chooseEv('+i+')">'+c+'</button>').join('')
+          +'</div></div>';
+      }
+    } else {
+      evH='<button class="btn btnp" style="width:100%;padding:11px" onclick="advDay();if(checkEnd())go(\'end\');else go(\'travel\')">Continue the Road →</button>';
+    }
+    return miniMap()
+      +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px">'
+      +'<h3 style="margin:0">Day '+J.day+' — '+J.dobj.icon+' '+J.dobj.name+'</h3>'
+      +'<span style="font-size:12px;color:#888780">'+J.daysLeft+' days left</span></div>'
+      +'<div class="prog-bar"><div class="prog-fill" style="width:'+prog+'%"></div></div>'
+      +'<div class="card">'+sbar('❤ Health',J.health,100)+sbar('🍖 Food',J.food,120)+sbar('🪙 Gold',J.gold,100)+sbar('💙 Morale',J.morale,100)+'</div>'
+      +'<div style="margin-bottom:12px">'+evH+'</div>'
+      +'<h3>Journey Log</h3>'
+      +'<div class="card" style="max-height:100px;overflow-y:auto;padding:8px 12px">'
+      +[...J.log].reverse().map(l=>'<div class="loge">'+l+'</div>').join('')
+      +'</div>';
+  },
+  combat(){
+    const p=C.player,e=C.enemy;
+    let actH='';
+    if(C.done){
+      actH='<div style="text-align:center;padding:8px 0">'
+        +'<div style="font-size:15px;font-weight:600;margin-bottom:4px">'+(C.won?'Victory!':'Defeated')+'</div>'
+        +'<div style="font-size:13px;color:#888780;margin-bottom:10px">'+(C.won?'Loot: '+(e.loot&&e.loot.s||'nothing'):'You flee with wounds.')+'</div>'
+        +'<button class="btn btnp" onclick="afterCombat()">Continue Journey →</button>'
+        +'</div>';
+    } else if(C.turn==='player'){
+      const stun=p.statuses.find(s=>s.type==='stun');
+      if(stun){
+        actH='<div style="font-size:13px;color:#791f1f;padding:5px 0">Stunned — losing your turn...</div>';
+        setTimeout(()=>{p.statuses=p.statuses.filter(s=>s.type!=='stun');endPT();},900);
+      } else {
+        actH='<div class="g2">'+p.actions.map(a=>{
+          const ok=p.ap>=a.cost;
+          const dt=a.dmg&&a.dmg[1]>0?a.dmg[0]+'–'+a.dmg[1]+' · ':'';
+          return'<button class="abt" onclick="doAction(\''+a.id+'\')" '+(ok?'':'disabled')+'>'
+            +'<span class="an">'+a.name+'</span>'
+            +'<span class="am">'+dt+a.cost+' AP · '+a.desc+'</span>'
+            +'</button>';
+        }).join('')+'</div>'
+        +'<button class="btn" style="width:100%;margin-top:7px;font-size:12px" onclick="endPT()">End turn →</button>';
+      }
+    } else {
+      actH='<div style="font-size:13px;color:#888780;text-align:center;padding:6px 0">Enemy is acting…</div>';
+    }
+    return'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
+      +'<span style="font-size:12px;color:#888780">Round '+C.round+'</span>'
+      +'<span style="font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;background:'+(C.turn==='player'?'#eeedfe':'#fcebeb')+';color:'+(C.turn==='player'?'#3c3489':'#791f1f')+'">'+(C.turn==='player'?'Your turn':'Enemy turn')+'</span>'
+      +'</div>'
+      +'<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;margin-bottom:10px;align-items:start">'
+      +combUnit(p,true)
+      +'<div style="display:flex;align-items:center;padding:0 4px;color:#888780;font-size:12px">VS</div>'
+      +combUnit(e,false)
+      +'</div>'
+      +actH
+      +'<div class="clog">'+C.log.slice(0,12).map(l=>'<div class="cl '+l.c+'">'+l.t+'</div>').join('')+'</div>';
+  },
+  end(){
+    const won=J.arrived,d=J.dobj;
+    const score=won?Math.round((J.health+J.morale+J.food)*.4+J.gold*.2):0;
+    const title=won?'You have escaped.':'The road claims another.';
+    const msg=won?'After '+J.day+' days of flight, you reach '+d.name+' '+d.icon+'.':'On day '+J.day+', your health or spirit gave out. The darkness of Ashenmoor follows.';
+    return'<div style="text-align:center;padding:1.5rem 0">'
+      +'<div style="font-size:40px;margin-bottom:10px">'+(won?d.icon:'💀')+'</div>'
+      +'<h2 style="font-size:22px;margin-bottom:6px">'+title+'</h2>'
+      +'<p style="margin-bottom:1.2rem;max-width:400px;margin-left:auto;margin-right:auto">'+msg+'</p>'
+      +'<div style="display:inline-flex;gap:14px;background:#f1efe8;border-radius:12px;padding:11px 18px;margin-bottom:1.2rem">'
+      +'<div style="text-align:center"><div style="font-size:11px;color:#888780">Days</div><div style="font-size:18px;font-weight:600">'+J.day+'</div></div>'
+      +'<div style="text-align:center"><div style="font-size:11px;color:#888780">Health</div><div style="font-size:18px;font-weight:600">'+Math.round(J.health)+'</div></div>'
+      +'<div style="text-align:center"><div style="font-size:11px;color:#888780">Gold</div><div style="font-size:18px;font-weight:600">'+Math.round(J.gold)+'</div></div>'
+      +'<div style="text-align:center"><div style="font-size:11px;color:#888780">Score</div><div style="font-size:18px;font-weight:600">'+score+'</div></div>'
+      +'</div><br>'
+      +'<button class="btn btnp" onclick="sel={race:null,cls:null,prof:null,dest:null};go(\'title\')">Play Again</button>'
+      +'</div>';
+  },
+};
+
+function render(){document.getElementById('app').innerHTML=SCREENS[W]();}
+render();
+</script>
+</body>
+</html>
