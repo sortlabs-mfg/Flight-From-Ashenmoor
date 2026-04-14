@@ -12,18 +12,23 @@ h3{font-size:15px;font-weight:600;margin-bottom:7px}
 p{font-size:14px;color:#5f5e5a;line-height:1.6}
 .card{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .btn{background:transparent;border:1px solid #b4b2a9;border-radius:8px;padding:8px 15px;font-size:13px;cursor:pointer;color:#1a1a18;transition:background .15s}
-.btn:hover{background:#f1efe8}
-.btn:active{transform:scale(.98)}
-.btnp{background:#3c3489;border-color:#3c3489;color:#eeedfe}
-.btnp:hover{background:#534ab7}
-.btnd{background:#a32d2d;border-color:#a32d2d;color:#fcebeb}
-.btnd:hover{background:#e24b4a}
+.btn:hover{background:#f1efe8}.btn:active{transform:scale(.98)}
+.btnp{background:#3c3489;border-color:#3c3489;color:#eeedfe}.btnp:hover{background:#534ab7}
+.btnd{background:#a32d2d;border-color:#a32d2d;color:#fcebeb}.btnd:hover{background:#e24b4a}
+.btnboss{background:#7a1a1a;border-color:#7a1a1a;color:#fde8e8}.btnboss:hover{background:#a32020}
 .btn:disabled,.btnp:disabled{opacity:.4;cursor:not-allowed}
-.sel-card{border:1px solid #e0ddd6;border-radius:8px;padding:9px 12px;cursor:pointer;transition:border .15s,background .15s}
-.sel-card:hover{background:#f8f7f3}
-.sel-card.on{border:2px solid #534ab7;background:#eeedfe}
+.sel-card{border:1px solid #e0ddd6;border-radius:8px;cursor:pointer;transition:border .15s,background .15s;overflow:hidden}
+.sel-card:hover{background:#f8f7f3}.sel-card.on{border:2px solid #534ab7;background:#eeedfe}
+.sel-card-img-ph{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:32px;background:#ede9e0}
+.sel-card-body{padding:8px 10px}
 .sel-card .nm{font-size:13px;font-weight:600}
 .sel-card .ds{font-size:11px;color:#888780;margin-top:2px;line-height:1.4}
+.sel-card .sk{font-size:10px;color:#534ab7;margin-top:3px;font-style:italic}
+.preview-panel{background:#fff;border:1px solid #e0ddd6;border-radius:12px;overflow:hidden;margin-bottom:14px}
+.preview-img{width:100%;aspect-ratio:3/1;object-fit:cover;object-position:top;display:block;background:#e8e5de}
+.preview-img-ph{width:100%;aspect-ratio:3/1;display:flex;align-items:center;justify-content:center;font-size:48px;background:#ede9e0}
+.preview-body{padding:10px 14px}
+.preview-skill{font-size:12px;color:#534ab7;margin-top:4px;font-style:italic}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .srow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
@@ -32,163 +37,349 @@ p{font-size:14px;color:#5f5e5a;line-height:1.6}
 .bfill{height:8px;border-radius:4px;transition:width .4s}
 .sval{font-size:12px;font-weight:600;width:28px;text-align:right}
 .ebox{border-left:3px solid #534ab7;padding:9px 13px;background:#f8f7f3;border-radius:0 8px 8px 0;margin-bottom:9px;font-size:13px;line-height:1.6}
-.ebox.danger{border-color:#a32d2d}
-.ebox.success{border-color:#0f6e56}
-.ebox.combat{border-color:#ba7517}
+.ebox.danger{border-color:#a32d2d}.ebox.success{border-color:#0f6e56}.ebox.combat{border-color:#ba7517}.ebox.boss{border-color:#7a1a1a;background:#fdf0f0}
 .loge{font-size:12px;padding:3px 0;border-bottom:1px solid #f0ede6;color:#888780;line-height:1.4}
 .loge:last-child{border:none}
 .dcrd{border:1px solid #e0ddd6;border-radius:8px;padding:9px 12px;cursor:pointer;margin-bottom:7px;display:flex;gap:10px;align-items:flex-start;transition:background .15s}
-.dcrd:hover{background:#f8f7f3}
-.dcrd.on{border:2px solid #534ab7}
-.comb{background:#fff;border:1px solid #e0ddd6;border-radius:10px;padding:12px 14px}
+.dcrd:hover{background:#f8f7f3}.dcrd.on{border:2px solid #534ab7}
+.comb{background:#fff;border:1px solid #e0ddd6;border-radius:10px;overflow:hidden}
+.comb.boss-card{border:2px solid #7a1a1a}
+.comb-portrait{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;display:block;background:#e8e5de}
+.comb-portrait-ph{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:40px;background:#ede9e0}
+.comb-portrait-ph.boss-ph{background:#3a0a0a;font-size:48px}
+.comb-body{padding:10px 12px}
 .cname{font-size:13px;font-weight:600;margin-bottom:7px}
+.cname.boss-name{color:#7a1a1a}
 .hpt{height:8px;background:#f1efe8;border-radius:4px;overflow:hidden;margin-bottom:5px}
 .hpf{height:8px;border-radius:4px;transition:width .4s}
 .arow{display:flex;gap:4px;margin-bottom:4px}
 .apip{width:11px;height:11px;border-radius:3px;border:1px solid #d3d1c7;background:#f1efe8}
 .apip.on{background:#534ab7;border-color:#534ab7}
 .stag{font-size:10px;padding:2px 6px;border-radius:5px;font-weight:600;display:inline-block;margin:1px}
-.sb{background:#e6f1fb;color:#0c447c}
-.sr{background:#fcebeb;color:#791f1f}
-.sg{background:#eaf3de;color:#27500a}
-.sy{background:#faeeda;color:#633806}
-.spu{background:#eeedfe;color:#3c3489}
+.sb{background:#e6f1fb;color:#0c447c}.sr{background:#fcebeb;color:#791f1f}
+.sg{background:#eaf3de;color:#27500a}.sy{background:#faeeda;color:#633806}.spu{background:#eeedfe;color:#3c3489}
 .abt{background:#fff;border:1px solid #d3d1c7;border-radius:7px;padding:7px 9px;cursor:pointer;text-align:left;font-family:system-ui,sans-serif;color:#1a1a18;width:100%}
-.abt:hover:not(:disabled){background:#f8f7f3}
-.abt:disabled{opacity:.4;cursor:not-allowed}
-.abt:active:not(:disabled){transform:scale(.98)}
-.abt .an{font-size:12px;font-weight:600;display:block;margin-bottom:1px}
-.abt .am{font-size:10px;color:#888780}
+.abt:hover:not(:disabled){background:#f8f7f3}.abt:disabled{opacity:.4;cursor:not-allowed}.abt:active:not(:disabled){transform:scale(.98)}
+.abt .an{font-size:12px;font-weight:600;display:block;margin-bottom:1px}.abt .am{font-size:10px;color:#888780}
+.abt.combo-skill{border-color:#534ab7;background:#f5f3ff}
 .clog{background:#f8f7f3;border-radius:7px;padding:7px 10px;margin-top:7px;max-height:90px;overflow-y:auto}
 .clog .cl{font-size:11px;padding:2px 0;border-bottom:1px solid #ece9e2;color:#888780;line-height:1.4}
-.clog .cl:last-child{border:none}
-.clog .cl.pl{color:#1a1a18}
-.clog .cl.en{color:#a32d2d}
-.clog .cl.sp{color:#534ab7}
+.clog .cl:last-child{border:none}.clog .cl.pl{color:#1a1a18}.clog .cl.en{color:#a32d2d}.clog .cl.sp{color:#534ab7}.clog .cl.boss{color:#7a1a1a}
 .prog-bar{height:5px;background:#e0ddd6;border-radius:3px;margin-bottom:10px;overflow:hidden}
 .prog-fill{height:5px;background:#534ab7;border-radius:3px;transition:width .5s}
 .section{margin-bottom:12px}
+.ambush-img{width:80px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#e8e5de}
+.ambush-img-ph{width:80px;height:80px;border-radius:8px;flex-shrink:0;background:#ede9e0;display:flex;align-items:center;justify-content:center;font-size:36px}
+.trait-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:#f1efe8;color:#5f5e5a;border:1px solid #e0ddd6;display:inline-block;margin:2px}
+.boss-banner{background:#3a0a0a;color:#fde8e8;border-radius:8px;padding:12px 14px;margin-bottom:10px;font-size:13px;line-height:1.6;border:1px solid #7a1a1a}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
+const IMG_EXT='jpg';
+function charImgSrc(r,c){return'images/race-'+r+'-class-'+c+'.'+IMG_EXT;}
+function enemyImgSrc(k){return'images/enemy-'+k+'.'+IMG_EXT;}
+
+/* ══════════════════════════════════════════════
+   RACE DEFINITIONS
+   Each race has:
+   - bonus: starting stat modifiers
+   - travelTraits: passive effects applied each day
+   - eventMods: modifiers on specific event outcomes
+══════════════════════════════════════════════ */
 const RACES=[
-  {id:'human',name:'Human',desc:'Adaptable. +20 food.',bonus:{food:20}},
-  {id:'elf',name:'High Elf',desc:'Keen. +10 morale.',bonus:{morale:10}},
-  {id:'dwarf',name:'Dwarf',desc:'Hardy. +15 health.',bonus:{health:15}},
-  {id:'halfling',name:'Halfling',desc:'Lucky. +15 gold.',bonus:{gold:15}},
-  {id:'tiefling',name:'Tiefling',desc:'Feared. +5 morale.',bonus:{morale:5}},
-  {id:'orc',name:'Half-Orc',desc:'Strong. +20 health.',bonus:{health:20}},
-];
-const CLASSES=[
-  {id:'knight',name:'Knight',desc:'+10 HP, +5 gold.',bonus:{health:10,gold:5},cid:'knight'},
-  {id:'wizard',name:'Wizard',desc:'+5 morale, -10 food.',bonus:{morale:5,food:-10},cid:'wizard'},
-  {id:'ranger',name:'Ranger',desc:'+15 food, forager.',bonus:{food:15},forage:.2,cid:'ranger'},
-  {id:'cleric',name:'Cleric',desc:'+5 HP, +10 morale.',bonus:{health:5,morale:10},cid:'cleric'},
-  {id:'rogue',name:'Rogue',desc:'+20 gold, -5 food.',bonus:{gold:20,food:-5},cid:'rogue'},
-  {id:'bard',name:'Bard',desc:'+20 morale, -5 food.',bonus:{morale:20,food:-5},cid:'bard'},
-];
-const PROFESSIONS=[
-  {id:'merchant',name:'Merchant',desc:'+30 gold, -10 food.',bonus:{gold:30,food:-10}},
-  {id:'soldier',name:'Veteran',desc:'+10 HP, -10 gold.',bonus:{health:10,gold:-10}},
-  {id:'healer',name:'Healer',desc:'+10 food, +5 morale.',bonus:{food:10,morale:5}},
-  {id:'scout',name:'Scout',desc:'+5 food, +5 gold.',bonus:{food:5,gold:5}},
-  {id:'farmer',name:'Farmer',desc:'+30 food, -10 gold.',bonus:{food:30,gold:-10}},
-  {id:'noble',name:'Noble',desc:'+20 gold, +5 morale, -15 food.',bonus:{gold:20,morale:5,food:-15}},
-];
-const DESTINATIONS=[
-  {id:'ironhold',name:'Ironhold Citadel',icon:'🏰',dist:5,danger:3,terrain:'Mountain',color:'#534ab7',dx:200,dy:72},
-  {id:'greenfen',name:'Greenfen Wilds',icon:'🌲',dist:4,danger:2,terrain:'Forest',color:'#0f6e56',dx:300,dy:128},
-  {id:'saltport',name:'Saltport',icon:'⛵',dist:6,danger:2,terrain:'Coastal',color:'#185fa5',dx:42,dy:165},
-  {id:'dawnspire',name:'Dawnspire Sanctum',icon:'🔯',dist:7,danger:4,terrain:'Desert',color:'#ba7517',dx:318,dy:270},
-  {id:'underveil',name:'The Underveil',icon:'🕳',dist:3,danger:5,terrain:'Underground',color:'#888780',dx:196,dy:255},
-];
-const CCLASSES={
-  knight:{hp:32,ap:3,actions:[
-    {id:'a',name:'Iron Slash',dmg:[8,14],cost:1,desc:'Sword swing',eff:null},
-    {id:'b',name:'Shield Wall',dmg:[0,0],cost:1,desc:'Block next hit',eff:{t:'shield',v:8,tg:'self'}},
-    {id:'c',name:'Brutal Charge',dmg:[14,20],cost:2,desc:'40% stun',eff:{t:'stun',ch:.4,tg:'enemy'}},
-    {id:'d',name:'Rally Cry',dmg:[0,0],cost:2,desc:'Heal 8 HP',eff:{t:'heal',v:8,tg:'self'}},
-  ]},
-  wizard:{hp:22,ap:4,actions:[
-    {id:'a',name:'Arcane Bolt',dmg:[10,16],cost:1,desc:'Magic missile',eff:null},
-    {id:'b',name:'Flame Curse',dmg:[4,8],cost:1,desc:'Burn 3/turn×3',eff:{t:'burn',v:3,turns:3,tg:'enemy'}},
-    {id:'c',name:'Nova Blast',dmg:[18,26],cost:3,desc:'Massive spell',eff:null},
-    {id:'d',name:'Blink Step',dmg:[0,0],cost:1,desc:'Dodge next hit',eff:{t:'shield',v:99,tg:'self'}},
-  ]},
-  ranger:{hp:26,ap:3,actions:[
-    {id:'a',name:'Quick Shot',dmg:[7,11],cost:1,desc:'Arrow volley',eff:null},
-    {id:'b',name:'Poison Arrow',dmg:[5,9],cost:1,desc:'Bleed 2/t×4',eff:{t:'bleed',v:2,turns:4,tg:'enemy'}},
-    {id:'c',name:'Twin Strike',dmg:[6,10],cost:2,desc:'2 hits',hits:2,eff:null},
-    {id:'d',name:'Snare Trap',dmg:[3,6],cost:1,desc:'75% stun',eff:{t:'stun',ch:.75,tg:'enemy'}},
-  ]},
-  cleric:{hp:28,ap:3,actions:[
-    {id:'a',name:'Divine Smite',dmg:[9,14],cost:1,desc:'Holy strike',eff:null},
-    {id:'b',name:'Heal',dmg:[0,0],cost:1,desc:'Restore 12 HP',eff:{t:'heal',v:12,tg:'self'}},
-    {id:'c',name:'Blessing',dmg:[0,0],cost:2,desc:'Shield+regen',eff:{t:'multi',effs:[{t:'shield',v:8,tg:'self'},{t:'regen',v:3,turns:3,tg:'self'}]}},
-    {id:'d',name:'Wrath',dmg:[15,22],cost:2,desc:'Holy blast',eff:null},
-  ]},
-  rogue:{hp:24,ap:4,actions:[
-    {id:'a',name:'Backstab',dmg:[9,15],cost:1,desc:'Vital strike',eff:null},
-    {id:'b',name:'Smoke Bomb',dmg:[0,0],cost:1,desc:'Shield 12+regen',eff:{t:'multi',effs:[{t:'shield',v:12,tg:'self'},{t:'regen',v:3,turns:3,tg:'self'}]}},
-    {id:'c',name:'Combo Strike',dmg:[4,7],cost:1,desc:'3 rapid hits',hits:3,eff:null},
-    {id:'d',name:'Execute',dmg:[0,0],cost:2,desc:'Bonus dmg <40% HP',spec:'exec'},
-  ]},
-  bard:{hp:24,ap:4,actions:[
-    {id:'a',name:'Sonic Strike',dmg:[8,13],cost:1,desc:'Sound blast',eff:null},
-    {id:'b',name:'Battle Song',dmg:[0,0],cost:1,desc:'Regen+heal',eff:{t:'multi',effs:[{t:'regen',v:4,turns:3,tg:'self'},{t:'heal',v:4,tg:'self'}]}},
-    {id:'c',name:'Mockery',dmg:[5,9],cost:1,desc:'40% stun',eff:{t:'stun',ch:.4,tg:'enemy'}},
-    {id:'d',name:'Crescendo',dmg:[14,20],cost:2,desc:'Grand finale',eff:null},
-  ]},
-};
-const ENEMIES=[
-  {name:'Bandit Captain',icon:'⚔',hp:28,ap:2,loot:{g:15,h:0,f:0,s:'15 gold looted'},actions:[
-    {id:'a',name:'Heavy Slash',dmg:[8,13],cost:1,eff:null},
-    {id:'b',name:'Blade Flurry',dmg:[5,9],cost:2,hits:2,eff:null},
-    {id:'c',name:'Intimidate',dmg:[2,4],cost:1,eff:{t:'stun',ch:.3,tg:'enemy'}},
-  ]},
-  {name:'Dark Cultist',icon:'🔮',hp:22,ap:3,loot:{g:8,h:5,f:0,s:'8 gold + 5 HP'},actions:[
-    {id:'a',name:'Hex Bolt',dmg:[9,14],cost:1,eff:{t:'burn',v:2,turns:2,tg:'enemy'}},
-    {id:'b',name:'Life Drain',dmg:[6,10],cost:1,eff:{t:'heal',v:5,tg:'self'}},
-    {id:'c',name:'Dark Ritual',dmg:[14,20],cost:2,eff:null},
-  ]},
-  {name:'Stone Troll',icon:'🪨',hp:40,ap:2,loot:{g:5,h:0,f:15,s:'5 gold + 15 food'},actions:[
-    {id:'a',name:'Boulder Smash',dmg:[10,16],cost:1,eff:{t:'stun',ch:.25,tg:'enemy'}},
-    {id:'b',name:'Stone Regen',dmg:[0,0],cost:1,eff:{t:'heal',v:8,tg:'self'}},
-    {id:'c',name:'Rock Hurl',dmg:[12,18],cost:2,eff:null},
-  ]},
-  {name:'Shadow Wraith',icon:'👻',hp:20,ap:3,loot:{g:0,h:12,f:0,s:'+12 HP from ectoplasm'},actions:[
-    {id:'a',name:'Soul Rend',dmg:[7,12],cost:1,eff:{t:'bleed',v:3,turns:3,tg:'enemy'}},
-    {id:'b',name:'Phase Shift',dmg:[0,0],cost:1,eff:{t:'shield',v:99,tg:'self'}},
-    {id:'c',name:'Banshee Wail',dmg:[11,17],cost:2,eff:{t:'stun',ch:.5,tg:'enemy'}},
-  ]},
-  {name:'Wyvern Scout',icon:'🐉',hp:34,ap:2,loot:{g:10,h:0,f:10,s:'10 gold + 10 food'},actions:[
-    {id:'a',name:'Venom Bite',dmg:[8,12],cost:1,eff:{t:'bleed',v:2,turns:4,tg:'enemy'}},
-    {id:'b',name:'Talon Swipe',dmg:[11,17],cost:1,eff:null},
-    {id:'c',name:'Fire Breath',dmg:[7,11],cost:2,eff:{t:'burn',v:4,turns:2,tg:'enemy'}},
-  ]},
-];
-const EVENTS=[
-  {type:'danger',t:'Cursed Crossroads',d:'A magical hex blocks the road.',ch:['Push through','Detour','Dispel'],ef:[{health:-10,morale:-10},{food:-15},{morale:5,health:-5}]},
-  {type:'danger',t:'Sickness',d:'Fever sweeps the party.',ch:['Rest','Press on','Treat'],ef:[{health:-20,food:-5,days:2},{health:-30},{health:-10}]},
-  {type:'danger',t:'River Flood',d:'The ford is deadly.',ch:['Cross','Find bridge','Wait'],ef:[{health:-15,food:-5},{gold:-10,days:1},{food:-10,days:2}]},
-  {type:'warn',t:'Overpriced Waystation',d:'Supplies at extortionate prices.',ch:['Buy','Barter','Steal'],ef:[{gold:-25,food:20},{gold:-15,food:10},{food:20,morale:-10}]},
-  {type:'warn',t:'Enemy Checkpoint',d:'Soldiers loyal to your pursuers.',ch:['Pay bribe','Forge papers','Sneak around'],ef:[{gold:-20},{morale:-10},{days:1,food:-5}]},
-  {type:'warn',t:'Equipment Failure',d:'A wagon wheel breaks.',ch:['Repair','Lighten load','Push on'],ef:[{gold:-15,days:1},{food:-15},{health:-10}]},
-  {type:'success',t:'Abandoned Farmstead',d:'The pantry is still stocked.',ch:['Take all','Take some'],ef:[{food:30,morale:5},{food:15,morale:10}]},
-  {type:'success',t:'Sacred Spring',d:'Healing waters hidden in the hills.',ch:['Drink and rest','Bottle it'],ef:[{health:25,morale:10,days:1},{health:10,morale:5}]},
-  {type:'success',t:'Fellow Refugees',d:'Survivors share what they have.',ch:['Travel together','Accept and part'],ef:[{morale:15,food:10,days:1},{morale:10,food:15}]},
+  {id:'human',name:'Human',icon:'🧑',
+   desc:'Adaptable survivors. Travel fast, extra food.',
+   bonus:{food:20},
+   travelTraits:['Adaptable: no travel penalties'],
+   travelMod:{daysBonus:0},                         // baseline — no slow/fast
+   sneakBonus:0, combatBonus:0, sickResist:0, socialBonus:.1,
+   flavor:'Your kind have outlasted a hundred empires.'},
+
+  {id:'elf',name:'High Elf',icon:'🌿',
+   desc:'Keen senses. Avoid ambushes. +10 morale.',
+   bonus:{morale:10},
+   travelTraits:['Fleet-footed: -1 day on forest roads','Ambush: 15% avoid chance'],
+   travelMod:{daysBonus:-1,terrain:'greenfen'},      // 1 less day to Greenfen
+   sneakBonus:.15, combatBonus:0, sickResist:.1, socialBonus:0,
+   flavor:'The forests remember older roads.'},
+
+  {id:'dwarf',name:'Dwarf',icon:'⛏',
+   desc:'Hardy but slow. Resists sickness. +15 HP.',
+   bonus:{health:15},
+   travelTraits:['Stone-legged: +2 days travel','Ironclad: 25% sickness resist'],
+   travelMod:{daysBonus:2},                          // always 2 extra days
+   sneakBonus:0, combatBonus:.1, sickResist:.25, socialBonus:0,
+   flavor:'Stone outlasts fire.'},
+
+  {id:'halfling',name:'Halfling',icon:'🍀',
+   desc:'Lucky and nimble. Sneak past threats. +15 gold.',
+   bonus:{gold:15},
+   travelTraits:['Small & quiet: 20% checkpoint sneak','Lucky: 10% bonus loot'],
+   travelMod:{daysBonus:0},
+   sneakBonus:.2, combatBonus:0, sickResist:0, socialBonus:0, luckBonus:.1,
+   flavor:'Small feet make no sound.'},
+
+  {id:'tiefling',name:'Tiefling',icon:'🔥',
+   desc:'Feared. Bandits hesitate. Resist fire & curses.',
+   bonus:{morale:5},
+   travelTraits:['Infernal aura: 20% bandit retreat','Fire/curse resist'],
+   travelMod:{daysBonus:0},
+   sneakBonus:0, combatBonus:0, sickResist:.1, fearBonus:.2, socialBonus:0,
+   flavor:'They see your horns and hesitate.'},
+
+  {id:'orc',name:'Half-Orc',icon:'💪',
+   desc:'Powerful. Combat bonus. Intimidate enemies.',
+   bonus:{health:20},
+   travelTraits:['Brutish: 20% combat damage bonus','Intimidate: enemies may flee'],
+   travelMod:{daysBonus:0},
+   sneakBonus:0, combatBonus:.2, sickResist:0, socialBonus:0,
+   flavor:'Strength is the only passport.'},
 ];
 
+/* ══════════════════════════════════════════════
+   CLASS DEFINITIONS
+   cid maps to combat action set
+   comboSkills: unique skill per race (keyed by raceId)
+══════════════════════════════════════════════ */
+const CLASSES=[
+  {id:'knight',name:'Knight',icon:'🛡',
+   desc:'+10 HP, +5 gold. Armored.',
+   bonus:{health:10,gold:5},cid:'knight',
+   travelTraits:['Heavy armor: 15% injury resist'],
+   comboSkills:{
+     human:   {name:'Lionheart',    desc:'Rallying presence boosts party each dawn (+3 HP/day)',     passive:true, dailyHeal:3},
+     elf:     {name:'Moonblade Guard',desc:'Perfect parry chance 20% per round',                    passive:true, parryChance:.2},
+     dwarf:   {name:'Runeguard',    desc:'Ancient runes absorb first hit each combat for free',      passive:true, freeShield:10},
+     halfling:{name:'Lucky Parry',  desc:'25% chance any hit misses entirely',                      passive:true, dodgeChance:.25},
+     tiefling:{name:'Hellfire Edge',desc:'Sword ignites on hit — adds Burn 2/t×2',                  passive:true, onHitEffect:{t:'burn',v:2,turns:2,tg:'enemy'}},
+     orc:     {name:'Blood Feud',   desc:'Each hit taken increases next attack +3 dmg (stacks ×3)', passive:true, rageStack:true},
+   }},
+
+  {id:'wizard',name:'Wizard',icon:'🔮',
+   desc:'+5 morale, -10 food. Arcane power.',
+   bonus:{morale:5,food:-10},cid:'wizard',
+   travelTraits:['Arcane sight: detect magical traps'],
+   comboSkills:{
+     human:   {name:'Spellweave',   desc:'Every 3rd spell costs 0 AP',                              passive:true, freeEvery:3},
+     elf:     {name:'Starfire',     desc:'Nova Blast hits twice on crits (10% chance)',              passive:true, critDouble:.1},
+     dwarf:   {name:'Earthshatter', desc:'Unlocks Earthshatter: deal 20–28 earth dmg + 50% stun',   passive:false, skill:{id:'xs',name:'Earthshatter',dmg:[20,28],cost:2,desc:'Earth magic',eff:{t:'stun',ch:.5,tg:'enemy'}}},
+     halfling:{name:'Pocket Magic', desc:'Unlocks Mischief Bolt: 3×(4–7 dmg) chaotic shots',        passive:false, skill:{id:'xs',name:'Mischief Bolt',dmg:[4,7],cost:1,desc:'3 chaotic shots',hits:3,eff:null}},
+     tiefling:{name:'Hellpact',     desc:'Unlocks Hellfire Pact: sacrifice 8 HP to deal 28–36 dmg', passive:false, skill:{id:'xs',name:'Hellfire Pact',dmg:[28,36],cost:2,desc:'Costs 8 HP',spec:'pact'}},
+     orc:     {name:'War Magic',    desc:'Unlocks Warbeast Surge: 16–24 dmg + self-regen 4/t×2',    passive:false, skill:{id:'xs',name:'Warbeast Surge',dmg:[16,24],cost:2,desc:'dmg+regen',eff:{t:'multi',effs:[{t:'regen',v:4,turns:2,tg:'self'}]}}},
+   }},
+
+  {id:'ranger',name:'Ranger',icon:'🏹',
+   desc:'+15 food, forager. Swift roads.',
+   bonus:{food:15},cid:'ranger',forage:.2,
+   travelTraits:['Forager: 20% daily food find','Trailblazer: -1 day to all journeys'],
+   travelMod:{daysBonus:-1},
+   comboSkills:{
+     human:   {name:'Pathfinder',   desc:'Foraging chance increases to 35%',                        passive:true, forageBoost:.35},
+     elf:     {name:'Ghoststep',    desc:'20% chance to avoid all combat events entirely',           passive:true, avoidCombat:.2},
+     dwarf:   {name:'Stone Stalker',desc:'Mountain terrain grants +5 HP regen each day',            passive:true, terrainHeal:{terrain:'ironhold',val:5}},
+     halfling:{name:'Burrow Shot',  desc:'First round always free (costs 0 AP)',                    passive:true, freeFirstRound:true},
+     tiefling:{name:'Hellhound',    desc:'Summon: deal 8 extra fire dmg on first attack each round', passive:true, roundBonus:8},
+     orc:     {name:'Blood Scent',  desc:'Tracks wounded enemies — bleed deals +1 extra/t',         passive:true, bleedBoost:1},
+   }},
+
+  {id:'cleric',name:'Cleric',icon:'✨',
+   desc:'+5 HP, +10 morale. Divine favor.',
+   bonus:{health:5,morale:10},cid:'cleric',
+   travelTraits:['Sacred rites: sickness chance -20%','Party heals +3 HP each dawn'],
+   dailyHeal:3, sickReduce:.2,
+   comboSkills:{
+     human:   {name:'Shepherd',     desc:'Party heals +5 HP at dawn (instead of 3)',                passive:true, dailyHeal:5},
+     elf:     {name:'Moonweave',    desc:'Heal restores +6 extra HP (18 total)',                    passive:true, healBoost:6},
+     dwarf:   {name:'Ancestor\'s Wrath',desc:'Unlocks Ancestor Smite: 18–26 dmg, ignores shields', passive:false, skill:{id:'xs',name:'Ancestor Smite',dmg:[18,26],cost:2,desc:'Ignores shields',spec:'pierce'}},
+     halfling:{name:'Blessed Feet', desc:'Halfling luck: 15% avoid all negative events',            passive:true, eventAvoid:.15},
+     tiefling:{name:'Hellfire Grace',desc:'Damage dealt also heals self for 30%',                   passive:true, lifesteal:.3},
+     orc:     {name:'Blood Ritual', desc:'Unlocks Blood Offering: sacrifice 10 HP to fully heal',   passive:false, skill:{id:'xs',name:'Blood Offering',dmg:[0,0],cost:1,desc:'Lose 10 HP, heal full',spec:'bloodheal'}},
+   }},
+
+  {id:'rogue',name:'Rogue',icon:'🗡',
+   desc:'+20 gold, -5 food. Streets know you.',
+   bonus:{gold:20,food:-5},cid:'rogue',
+   travelTraits:['Shadow step: 15% avoid checkpoints','Street contacts: +10 gold on social events'],
+   comboSkills:{
+     human:   {name:'Con Artist',   desc:'Social events always yield the best outcome',             passive:true, socialBest:true},
+     elf:     {name:'Phantom Blade', desc:'First attack each combat ignores armor (pierce)',         passive:true, firstPierce:true},
+     dwarf:   {name:'Grudge Strike', desc:'Execute triggers at 50% HP instead of 40%',              passive:true, execThreshold:.5},
+     halfling:{name:'Vanishing Act', desc:'25% chance to start combat with Dodge active',           passive:true, startDodge:.25},
+     tiefling:{name:'Soul Thief',   desc:'Killing blow steals 15 HP from enemy',                   passive:true, killHeal:15},
+     orc:     {name:'Savage Combo', desc:'Combo Strike deals +2 dmg per hit (12 total)',            passive:true, comboBuff:2},
+   }},
+
+  {id:'bard',name:'Bard',icon:'🎵',
+   desc:'+20 morale, -5 food. The road sings.',
+   bonus:{morale:20,food:-5},cid:'bard',
+   travelTraits:['Inspire: morale loss halved','Wayfarer\'s tale: 10% cheaper waystations'],
+   comboSkills:{
+     human:   {name:'Saga of Heroes',desc:'Morale never drops below 20 while alive',                passive:true, moraleFloor:20},
+     elf:     {name:'Elven Hymn',    desc:'Battle Song also removes all status effects from self',  passive:true, songCleanse:true},
+     dwarf:   {name:'War Drums',     desc:'Unlocks War Drums: grants self +4 dmg bonus for 3 turns',passive:false, skill:{id:'xs',name:'War Drums',dmg:[0,0],cost:1,desc:'+4 dmg for 3 turns',spec:'wardrum'}},
+     halfling:{name:'The Lucky Tune',desc:'10% chance per turn to fully restore 1 random stat',    passive:true, luckTune:.1},
+     tiefling:{name:'Cursed Verse',  desc:'Mockery deals burn 3/t×3 in addition to stun',          passive:true, mockeryBurn:true},
+     orc:     {name:'Bloodsong',     desc:'Crescendo damage +8 when below 50% HP',                 passive:true, crescendoBuff:8},
+   }},
+];
+
+const PROFESSIONS=[
+  {id:'merchant',name:'Merchant',icon:'💰',desc:'+30 gold, -10 food.',bonus:{gold:30,food:-10}},
+  {id:'soldier', name:'Veteran', icon:'⚔', desc:'+10 HP, -10 gold.',  bonus:{health:10,gold:-10}},
+  {id:'healer',  name:'Healer',  icon:'💊',desc:'+10 food, +5 morale.',bonus:{food:10,morale:5}},
+  {id:'scout',   name:'Scout',   icon:'🔭',desc:'+5 food, +5 gold.',   bonus:{food:5,gold:5}},
+  {id:'farmer',  name:'Farmer',  icon:'🌾',desc:'+30 food, -10 gold.', bonus:{food:30,gold:-10}},
+  {id:'noble',   name:'Noble',   icon:'👑',desc:'+20 gold, +5 morale, -15 food.',bonus:{gold:20,morale:5,food:-15}},
+];
+
+const DESTINATIONS=[
+  {id:'ironhold', name:'Ironhold Citadel', icon:'🏰',dist:5,danger:3,terrain:'Mountain',   color:'#534ab7',dx:200,dy:72},
+  {id:'greenfen', name:'Greenfen Wilds',   icon:'🌲',dist:4,danger:2,terrain:'Forest',     color:'#0f6e56',dx:300,dy:128},
+  {id:'saltport', name:'Saltport',         icon:'⛵',dist:6,danger:2,terrain:'Coastal',    color:'#185fa5',dx:42, dy:165},
+  {id:'dawnspire',name:'Dawnspire Sanctum',icon:'🔯',dist:7,danger:4,terrain:'Desert',     color:'#ba7517',dx:318,dy:270},
+  {id:'underveil',name:'The Underveil',    icon:'🕳',dist:3,danger:5,terrain:'Underground',color:'#888780',dx:196,dy:255},
+];
+
+/* ══════════════════════════════════════════════
+   COMBAT CLASS ACTION SETS
+   Combo skill (xs slot) is injected at runtime
+   based on race+class selection
+══════════════════════════════════════════════ */
+const CCLASSES={
+  knight:{hp:32,ap:3,base:[
+    {id:'a',name:'Iron Slash',   dmg:[8,14], cost:1,desc:'Sword swing',    eff:null},
+    {id:'b',name:'Shield Wall',  dmg:[0,0],  cost:1,desc:'Block next hit', eff:{t:'shield',v:8,tg:'self'}},
+    {id:'c',name:'Brutal Charge',dmg:[14,20],cost:2,desc:'40% stun',       eff:{t:'stun',ch:.4,tg:'enemy'}},
+    {id:'d',name:'Rally Cry',    dmg:[0,0],  cost:2,desc:'Heal 8 HP',      eff:{t:'heal',v:8,tg:'self'}},
+  ]},
+  wizard:{hp:22,ap:4,base:[
+    {id:'a',name:'Arcane Bolt', dmg:[10,16],cost:1,desc:'Magic missile',  eff:null},
+    {id:'b',name:'Flame Curse', dmg:[4,8],  cost:1,desc:'Burn 3/t×3',     eff:{t:'burn',v:3,turns:3,tg:'enemy'}},
+    {id:'c',name:'Nova Blast',  dmg:[18,26],cost:3,desc:'Massive spell',   eff:null},
+    {id:'d',name:'Blink Step',  dmg:[0,0],  cost:1,desc:'Dodge next hit', eff:{t:'shield',v:99,tg:'self'}},
+  ]},
+  ranger:{hp:26,ap:3,base:[
+    {id:'a',name:'Quick Shot',  dmg:[7,11], cost:1,desc:'Arrow volley',    eff:null},
+    {id:'b',name:'Poison Arrow',dmg:[5,9],  cost:1,desc:'Bleed 2/t×4',     eff:{t:'bleed',v:2,turns:4,tg:'enemy'}},
+    {id:'c',name:'Twin Strike', dmg:[6,10], cost:2,desc:'2 hits', hits:2,  eff:null},
+    {id:'d',name:'Snare Trap',  dmg:[3,6],  cost:1,desc:'75% stun',        eff:{t:'stun',ch:.75,tg:'enemy'}},
+  ]},
+  cleric:{hp:28,ap:3,base:[
+    {id:'a',name:'Divine Smite',dmg:[9,14], cost:1,desc:'Holy strike',     eff:null},
+    {id:'b',name:'Heal',        dmg:[0,0],  cost:1,desc:'Restore 12 HP',   eff:{t:'heal',v:12,tg:'self'}},
+    {id:'c',name:'Blessing',    dmg:[0,0],  cost:2,desc:'Shield+regen',    eff:{t:'multi',effs:[{t:'shield',v:8,tg:'self'},{t:'regen',v:3,turns:3,tg:'self'}]}},
+    {id:'d',name:'Wrath',       dmg:[15,22],cost:2,desc:'Holy blast',      eff:null},
+  ]},
+  rogue:{hp:24,ap:4,base:[
+    {id:'a',name:'Backstab',    dmg:[9,15], cost:1,desc:'Vital strike',    eff:null},
+    {id:'b',name:'Smoke Bomb',  dmg:[0,0],  cost:1,desc:'Shield 12+regen', eff:{t:'multi',effs:[{t:'shield',v:12,tg:'self'},{t:'regen',v:3,turns:3,tg:'self'}]}},
+    {id:'c',name:'Combo Strike',dmg:[4,7],  cost:1,desc:'3 rapid hits',hits:3,eff:null},
+    {id:'d',name:'Execute',     dmg:[0,0],  cost:2,desc:'Bonus dmg <40%',  spec:'exec'},
+  ]},
+  bard:{hp:24,ap:4,base:[
+    {id:'a',name:'Sonic Strike',dmg:[8,13], cost:1,desc:'Sound blast',     eff:null},
+    {id:'b',name:'Battle Song', dmg:[0,0],  cost:1,desc:'Regen+heal',      eff:{t:'multi',effs:[{t:'regen',v:4,turns:3,tg:'self'},{t:'heal',v:4,tg:'self'}]}},
+    {id:'c',name:'Mockery',     dmg:[5,9],  cost:1,desc:'40% stun',        eff:{t:'stun',ch:.4,tg:'enemy'}},
+    {id:'d',name:'Crescendo',   dmg:[14,20],cost:2,desc:'Grand finale',    eff:null},
+  ]},
+};
+
+/* Build action list by injecting combo skill into slot xs */
+function buildActions(raceId,clsId){
+  const base=JSON.parse(JSON.stringify(CCLASSES[clsId].base));
+  const cls=CLASSES.find(c=>c.id===clsId);
+  const combo=cls.comboSkills[raceId];
+  if(combo&&!combo.passive&&combo.skill){
+    // replace last action with combo skill
+    base[base.length-1]=combo.skill;
+  }
+  return base;
+}
+
+/* ══════════════════════════════════════════════
+   DRAGON KNIGHT — BOSS ENEMY
+   Spawns once per run, near the end of the journey
+   (when daysLeft <= 4 and destDanger >= 3)
+══════════════════════════════════════════════ */
+const DRAGON_KNIGHT={
+  name:'The Dragon Knight',
+  imgKey:'dragon-knight',
+  icon:'🐲',
+  isBoss:true,
+  hp:65, ap:3,
+  loot:{g:40,h:20,f:0,s:'40 gold + 20 HP — the Dragon Knight\'s hoard'},
+  phases:[
+    {label:'Phase I',threshold:1.0,msg:'The Dragon Knight raises his blade.'},
+    {label:'Phase II — Enraged',threshold:.5,msg:'Below half HP — the Dragon Knight enrages! Fire aura ignites!'},
+  ],
+  actions:[
+    {id:'a',name:'Dragon Slash',  dmg:[12,18],cost:1,eff:null},
+    {id:'b',name:'Wyvern Breath', dmg:[8,13], cost:1,eff:{t:'burn',v:4,turns:3,tg:'enemy'}},
+    {id:'c',name:'Armored Bash',  dmg:[10,15],cost:1,eff:{t:'stun',ch:.3,tg:'enemy'}},
+    {id:'d',name:'Dragon Roar',   dmg:[0,0],  cost:1,eff:{t:'multi',effs:[{t:'shield',v:15,tg:'self'},{t:'regen',v:5,turns:3,tg:'self'}]}},
+    // Phase II only
+    {id:'e',name:'Inferno Surge', dmg:[18,26],cost:2,eff:{t:'burn',v:5,turns:3,tg:'enemy'},phaseTwo:true},
+    {id:'f',name:'Death Charge',  dmg:[20,28],cost:2,eff:{t:'stun',ch:.5,tg:'enemy'},phaseTwo:true},
+  ],
+};
+
+const ENEMIES=[
+  {name:'Bandit Captain',imgKey:'bandit-captain',icon:'⚔', hp:28,ap:2,loot:{g:15,h:0, f:0, s:'15 gold looted'},actions:[
+    {id:'a',name:'Heavy Slash', dmg:[8,13], cost:1,eff:null},
+    {id:'b',name:'Blade Flurry',dmg:[5,9],  cost:2,hits:2,eff:null},
+    {id:'c',name:'Intimidate',  dmg:[2,4],  cost:1,eff:{t:'stun',ch:.3,tg:'enemy'}},
+  ]},
+  {name:'Dark Cultist',  imgKey:'dark-cultist',  icon:'🔮',hp:22,ap:3,loot:{g:8, h:5, f:0, s:'8 gold + 5 HP'},actions:[
+    {id:'a',name:'Hex Bolt',   dmg:[9,14], cost:1,eff:{t:'burn',v:2,turns:2,tg:'enemy'}},
+    {id:'b',name:'Life Drain', dmg:[6,10], cost:1,eff:{t:'heal',v:5,tg:'self'}},
+    {id:'c',name:'Dark Ritual',dmg:[14,20],cost:2,eff:null},
+  ]},
+  {name:'Stone Troll',   imgKey:'stone-troll',   icon:'🪨',hp:40,ap:2,loot:{g:5, h:0, f:15,s:'5 gold + 15 food'},actions:[
+    {id:'a',name:'Boulder Smash',dmg:[10,16],cost:1,eff:{t:'stun',ch:.25,tg:'enemy'}},
+    {id:'b',name:'Stone Regen', dmg:[0,0],  cost:1,eff:{t:'heal',v:8,tg:'self'}},
+    {id:'c',name:'Rock Hurl',   dmg:[12,18],cost:2,eff:null},
+  ]},
+  {name:'Shadow Wraith', imgKey:'shadow-wraith', icon:'👻',hp:20,ap:3,loot:{g:0, h:12,f:0, s:'+12 HP from ectoplasm'},actions:[
+    {id:'a',name:'Soul Rend',   dmg:[7,12], cost:1,eff:{t:'bleed',v:3,turns:3,tg:'enemy'}},
+    {id:'b',name:'Phase Shift', dmg:[0,0],  cost:1,eff:{t:'shield',v:99,tg:'self'}},
+    {id:'c',name:'Banshee Wail',dmg:[11,17],cost:2,eff:{t:'stun',ch:.5,tg:'enemy'}},
+  ]},
+  {name:'Wyvern Scout',  imgKey:'wyvern-scout',  icon:'🐉',hp:34,ap:2,loot:{g:10,h:0, f:10,s:'10 gold + 10 food'},actions:[
+    {id:'a',name:'Venom Bite',  dmg:[8,12], cost:1,eff:{t:'bleed',v:2,turns:4,tg:'enemy'}},
+    {id:'b',name:'Talon Swipe', dmg:[11,17],cost:1,eff:null},
+    {id:'c',name:'Fire Breath', dmg:[7,11], cost:2,eff:{t:'burn',v:4,turns:2,tg:'enemy'}},
+  ]},
+];
+
+const EVENTS=[
+  {type:'danger',t:'Cursed Crossroads',d:'A magical hex blocks the road.',          ch:['Push through','Detour','Dispel'],          ef:[{health:-10,morale:-10},{food:-15},{morale:5,health:-5}]},
+  {type:'danger',t:'Sickness',          d:'Fever sweeps the party.',                ch:['Rest','Press on','Treat'],                 ef:[{health:-20,food:-5,days:2},{health:-30},{health:-10}]},
+  {type:'danger',t:'River Flood',       d:'The ford is deadly.',                    ch:['Cross','Find bridge','Wait'],              ef:[{health:-15,food:-5},{gold:-10,days:1},{food:-10,days:2}]},
+  {type:'warn',  t:'Overpriced Waystation',d:'Supplies at extortionate prices.',    ch:['Buy','Barter','Steal'],                    ef:[{gold:-25,food:20},{gold:-15,food:10},{food:20,morale:-10}]},
+  {type:'warn',  t:'Enemy Checkpoint',  d:'Soldiers loyal to your pursuers.',       ch:['Pay bribe','Forge papers','Sneak around'], ef:[{gold:-20},{morale:-10},{days:1,food:-5}]},
+  {type:'warn',  t:'Equipment Failure', d:'A wagon wheel breaks.',                  ch:['Repair','Lighten load','Push on'],         ef:[{gold:-15,days:1},{food:-15},{health:-10}]},
+  {type:'success',t:'Abandoned Farmstead',d:'The pantry is still stocked.',         ch:['Take all','Take some'],                    ef:[{food:30,morale:5},{food:15,morale:10}]},
+  {type:'success',t:'Sacred Spring',    d:'Healing waters hidden in the hills.',    ch:['Drink and rest','Bottle it'],              ef:[{health:25,morale:10,days:1},{health:10,morale:5}]},
+  {type:'success',t:'Fellow Refugees',  d:'Survivors share what they have.',        ch:['Travel together','Accept and part'],       ef:[{morale:15,food:10,days:1},{morale:10,food:15}]},
+];
+
+/* ══════════════════════════════════════════════ STATE ══════════════════════════════════════════════ */
 let W='title';
 let sel={race:null,cls:null,prof:null,dest:null};
-let J={};
-let C={};
+let J={};   // journey state
+let C={};   // combat state
 
 const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
 const cl=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 function go(s){W=s;render();}
+
+function getComboSkill(){
+  if(!sel.race||!sel.cls)return null;
+  const cls=CLASSES.find(c=>c.id===sel.cls);
+  return cls.comboSkills[sel.race]||null;
+}
 
 function initJ(){
   const r=RACES.find(x=>x.id===sel.race),c=CLASSES.find(x=>x.id===sel.cls),
@@ -196,15 +387,34 @@ function initJ(){
   let b={health:100,food:50,gold:40,morale:70};
   [r.bonus,c.bonus,p.bonus].forEach(bx=>Object.entries(bx).forEach(([k,v])=>{b[k]=(b[k]||0)+v;}));
   Object.keys(b).forEach(k=>{b[k]=cl(b[k],0,k==='gold'?999:100);});
+
+  // Base days = dist * 3 + 3
+  let baseDays=d.dist*3+3;
+  // Race travel mod
+  if(r.travelMod){
+    if(r.travelMod.terrain){
+      if(d.id===r.travelMod.terrain) baseDays+=r.travelMod.daysBonus;
+    } else {
+      baseDays+=r.travelMod.daysBonus;
+    }
+  }
+  // Ranger class: -1 day
+  if(c.travelMod) baseDays+=c.travelMod.daysBonus||0;
+  baseDays=Math.max(3,baseDays);
+
   J={race:sel.race,cls:sel.cls,prof:sel.prof,dest:sel.dest,
+     charImg:charImgSrc(sel.race,sel.cls),
+     charIcon:(r.icon+' '+c.icon),
+     comboSkill:getComboSkill(),
+     rageCount:0, wardDrumTurns:0, freeRoundUsed:false, bossSpawned:false,
      health:b.health,food:b.food,gold:b.gold,morale:b.morale,
-     day:1,daysLeft:d.dist*3+3,maxDays:d.dist*3+3,
+     day:1,daysLeft:baseDays,maxDays:baseDays,
      log:['Your flight from Ashenmoor begins!'],ev:null,
      robj:r,cobj:c,pobj:p,dobj:d,alive:true,arrived:false};
 }
 
 function hc(v,m){const p=v/m;return p>.5?'#1d9e75':p>.25?'#ef9f27':'#e24b4a';}
-function sbar(lbl,v,m){const p=Math.round(v/m*100);return`<div class="srow"><span class="slbl">${lbl}</span><div class="bwrap"><div class="bfill" style="width:${p}%;background:${hc(v,m)}"></div></div><span class="sval">${Math.round(v)}</span></div>`;}
+function sbar(lbl,v,m){const p=Math.round(v/m*100);return'<div class="srow"><span class="slbl">'+lbl+'</span><div class="bwrap"><div class="bfill" style="width:'+p+'%;background:'+hc(v,m)+'"></div></div><span class="sval">'+Math.round(v)+'</span></div>';}
 
 function applyEff(e){
   if(e.health)J.health=cl(J.health+e.health,0,100);
@@ -213,17 +423,91 @@ function applyEff(e){
   if(e.morale)J.morale=cl(J.morale+e.morale,0,100);
   if(e.days)J.daysLeft=Math.max(1,J.daysLeft+e.days);
 }
+
 function advDay(){
   J.day++;J.daysLeft--;
   J.food=Math.max(0,J.food-8);
   if(J.food===0)J.health=Math.max(0,J.health-12);
   if(J.morale<30)J.health=Math.max(0,J.health-4);
   if(J.food>40)J.morale=cl(J.morale+2,0,100);
-  if((J.cls==='ranger'||J.prof==='farmer')&&Math.random()<.2){J.food=cl(J.food+12,0,120);J.log.push('Foraging finds hidden food.');}
+
+  // Dwarf sickness resistance
+  const robj=J.robj,cobj=J.cobj;
+  const sickRoll=robj.sickResist||0;
+
+  // Cleric daily heal
+  if(cobj.id==='cleric'){
+    const cs=J.comboSkill;
+    const heal=(cs&&cs.dailyHeal)||cobj.dailyHeal||3;
+    J.health=cl(J.health+heal,0,100);
+    J.log.push('Divine grace restores '+heal+' HP.');
+  }
+  // Human knight daily heal
+  if(J.comboSkill&&J.comboSkill.name==='Lionheart'){
+    J.health=cl(J.health+3,0,100);
+    J.log.push('Lionheart: +3 HP at dawn.');
+  }
+  // Dwarf stone stalker terrain heal
+  if(J.comboSkill&&J.comboSkill.terrainHeal&&J.dobj.id===J.comboSkill.terrainHeal.terrain){
+    J.health=cl(J.health+J.comboSkill.terrainHeal.val,0,100);
+    J.log.push('Stone Stalker: mountain air restores HP.');
+  }
+  // Halfling bard lucky tune
+  if(J.comboSkill&&J.comboSkill.luckTune&&Math.random()<J.comboSkill.luckTune){
+    const stats=['health','food','gold','morale'];
+    const s=stats[ri(0,3)];
+    J[s]=cl(J[s]+20,0,s==='gold'?999:100);
+    J.log.push('The Lucky Tune: +20 '+s+'!');
+  }
+  // Morale floor for Human Bard saga
+  if(J.comboSkill&&J.comboSkill.moraleFloor&&J.morale<J.comboSkill.moraleFloor){
+    J.morale=J.comboSkill.moraleFloor;
+  }
+
+  // Ranger forager
+  const forageChance=(J.comboSkill&&J.comboSkill.forageBoost)||((cobj.id==='ranger'||J.prof==='farmer')?0.2:0);
+  if(forageChance&&Math.random()<forageChance){
+    J.food=cl(J.food+12,0,120);J.log.push('Foraging finds hidden food.');
+  }
+
+  // Boss spawn: last 4 days of high-danger routes
+  const dangerDest=J.dobj.danger>=3;
+  if(dangerDest&&J.daysLeft<=4&&J.daysLeft>1&&!J.bossSpawned&&Math.random()<.55){
+    J.bossSpawned=true;
+    J.ev={type:'boss',enemy:DRAGON_KNIGHT};
+    return;
+  }
+
+  // Regular combat check
   const cc=J.dobj.danger*.08;
-  if(Math.random()<cc){J.ev={type:'combat',enemy:ENEMIES[ri(0,ENEMIES.length-1)]};}
-  else{const pool=EVENTS.filter(()=>Math.random()<.5);J.ev=(pool.length&&Math.random()<.65)?pool[ri(0,pool.length-1)]:null;}
+  // Elf ranger avoidCombat
+  if(J.comboSkill&&J.comboSkill.avoidCombat&&Math.random()<J.comboSkill.avoidCombat){
+    J.log.push('Ghoststep: you slip past the threat unseen.');
+    J.ev=null;
+    return;
+  }
+  // Tiefling fear bonus — bandits may retreat
+  if(J.robj.fearBonus&&Math.random()<J.robj.fearBonus){
+    J.log.push('Your infernal presence sends a threat fleeing.');
+    J.ev=null;
+    return;
+  }
+  if(Math.random()<cc){
+    // Halfling sneak: chance to avoid combat
+    if(J.robj.sneakBonus&&Math.random()<J.robj.sneakBonus){
+      J.log.push('Your small stature lets you slip past unnoticed.');
+      J.ev=null;
+      return;
+    }
+    J.ev={type:'combat',enemy:ENEMIES[ri(0,ENEMIES.length-1)]};
+  } else {
+    const pool=EVENTS.filter(()=>Math.random()<.5);
+    // Halfling luck on event outcomes
+    let ev=(pool.length&&Math.random()<.65)?pool[ri(0,pool.length-1)]:null;
+    J.ev=ev;
+  }
 }
+
 function checkEnd(){
   if(J.health<=0){J.alive=false;return true;}
   if(J.morale<=0){J.alive=false;return true;}
@@ -231,34 +515,71 @@ function checkEnd(){
   return false;
 }
 function chooseEv(i){
-  applyEff(J.ev.ef[i]);
+  let eff=JSON.parse(JSON.stringify(J.ev.ef[i]));
+  // Halfling eventAvoid (halfling cleric)
+  if(J.comboSkill&&J.comboSkill.eventAvoid&&Math.random()<J.comboSkill.eventAvoid){
+    J.log.push('Blessed Feet: the worst of it passes you by!');
+    eff={};
+  }
+  applyEff(eff);
   J.log.push(J.ev.t+': chose "'+J.ev.ch[i]+'"');
   J.ev=null;advDay();
   if(checkEnd())go('end');else go('travel');
 }
 function fleeFromCombat(){
   J.health=cl(J.health-20,0,100);J.gold=cl(J.gold-15,0,999);
-  J.log.push('Fled from '+J.ev.enemy.name+'. Lost HP and gold.');
+  J.log.push('Fled. Lost HP and gold.');
+  if(J.ev&&J.ev.enemy&&J.ev.enemy.isBoss)J.log.push('The Dragon Knight watches you flee... he will be at the gates.');
   J.ev=null;advDay();
   if(checkEnd())go('end');else go('travel');
 }
+
 function enterCombat(){
-  const edef=J.ev.enemy,cid=J.cobj.cid||'knight',cdef=CCLASSES[cid];
+  const edef=J.ev.enemy;
+  const cid=J.cobj.cid||'knight';
+  const cdef=CCLASSES[cid];
+  const actions=buildActions(J.robj.id,cid);
   C={
-    player:{name:J.cobj.name,icon:J.cobj.name[0],hp:cdef.hp,maxHp:cdef.hp,ap:cdef.ap,maxAp:cdef.ap,statuses:[],shield:0,actions:cdef.actions,isPlayer:true},
-    enemy:{name:edef.name,icon:edef.icon,hp:edef.hp,maxHp:edef.hp,ap:edef.ap,maxAp:edef.ap,statuses:[],shield:0,actions:edef.actions,loot:edef.loot,isPlayer:false},
-    turn:'player',log:[],round:1,done:false,won:false
+    player:{
+      name:J.robj.name+' '+J.cobj.name,icon:J.charIcon,
+      imgSrc:J.charImg,
+      hp:cdef.hp,maxHp:cdef.hp,ap:cdef.ap,maxAp:cdef.ap,
+      statuses:[],shield:0,actions,isPlayer:true,
+      raceId:J.robj.id,clsId:cid,comboSkill:J.comboSkill,
+      rageCount:J.rageCount,wardDrumBonus:0,wardDrumTurns:0,
+      freeRoundUsed:J.freeRoundUsed,
+    },
+    enemy:{
+      name:edef.name,icon:edef.icon,
+      imgSrc:enemyImgSrc(edef.imgKey),
+      isBoss:!!edef.isBoss,
+      hp:edef.hp,maxHp:edef.hp,ap:edef.ap,maxAp:edef.ap,
+      statuses:[],shield:0,
+      actions:edef.actions.filter(a=>!a.phaseTwo),
+      allActions:edef.actions,
+      loot:edef.loot,isPlayer:false,
+    },
+    turn:'player',log:[],round:1,done:false,won:false,
+    bossPhaseTwo:false,
   };
-  C.log.unshift({t:'Round 1! '+edef.name+' blocks your path!',c:'sp'});
+  if(edef.isBoss){
+    clog('⚔ THE DRAGON KNIGHT stands before the gate!','boss');
+    clog('A warrior of pure dragonfire and ancient steel.','boss');
+  } else {
+    clog('Round 1! '+edef.name+' blocks your path!','sp');
+  }
   go('combat');
 }
+
 function afterCombat(){
+  J.rageCount=C.player.rageCount||0;
   J.ev=null;
   if(checkEnd()){go('end');return;}
   advDay();
   if(checkEnd())go('end');else go('travel');
 }
 
+/* ─── Combat helpers ─── */
 function applyStatus(tgt,eff){
   if(!eff)return;
   const a=e=>{
@@ -271,64 +592,221 @@ function applyStatus(tgt,eff){
   };
   if(eff.t==='multi')eff.effs.forEach(a);else a(eff);
 }
-function dealDmg(tgt,raw){
+
+function dealDmg(tgt,raw,pierce){
   let d=raw;
-  if(tgt.shield>0){d=Math.max(0,d-tgt.shield);tgt.shield=0;}
+  if(!pierce&&tgt.shield>0){d=Math.max(0,d-tgt.shield);tgt.shield=0;}
   tgt.hp=cl(tgt.hp-d,0,tgt.maxHp);
   return d;
 }
+
 function tickSt(unit){
   const msgs=[];
   unit.statuses=unit.statuses.filter(s=>{
-    if(s.type==='burn'||s.type==='bleed'){const d=dealDmg(unit,s.v);msgs.push({t:unit.name+' takes '+d+' from '+s.type+'.',c:unit.isPlayer?'en':'pl'});s.turns--;return s.turns>0;}
+    if(s.type==='burn'||s.type==='bleed'){
+      const d=dealDmg(unit,s.v);
+      msgs.push({t:unit.name+' takes '+d+' from '+s.type+'.',c:unit.isPlayer?'en':'pl'});
+      s.turns--;return s.turns>0;
+    }
     if(s.type==='regen'){unit.hp=cl(unit.hp+s.v,0,unit.maxHp);msgs.push({t:unit.name+' regens '+s.v+' HP.',c:'sp'});s.turns--;return s.turns>0;}
     return true;
   });
   return msgs;
 }
+
 function clog(t,c){C.log.unshift({t,c:c||''});}
+
+function checkBossPhase(){
+  const e=C.enemy;
+  if(!e.isBoss||C.bossPhaseTwo)return;
+  if(e.hp/e.maxHp<=0.5){
+    C.bossPhaseTwo=true;
+    e.actions=e.allActions; // unlock phase 2 moves
+    clog('💥 PHASE II — The Dragon Knight ENRAGES! Fire aura ignites!','boss');
+    applyStatus(e,{t:'regen',v:5,turns:99}); // boss regens in phase 2
+  }
+}
+
 function doAction(aid){
   if(C.turn!=='player'||C.done)return;
   const p=C.player,e=C.enemy;
-  if(p.statuses.find(s=>s.type==='stun')){clog('You are stunned! Turn lost.','sp');p.statuses=p.statuses.filter(s=>s.type!=='stun');endPT();return;}
+  const cs=p.comboSkill;
+
+  if(p.statuses.find(s=>s.type==='stun')){
+    clog('You are stunned! Turn lost.','sp');
+    p.statuses=p.statuses.filter(s=>s.type!=='stun');
+    endPT();return;
+  }
+
   const act=p.actions.find(a=>a.id===aid);
   if(!act||p.ap<act.cost)return;
-  p.ap-=act.cost;
+
+  // Halfling ranger free first round
+  const freeRound=(cs&&cs.freeFirstRound&&!p.freeRoundUsed&&C.round===1);
+  if(!freeRound)p.ap-=act.cost;
+  else{p.freeRoundUsed=true;clog('Burrow Shot: first action costs 0 AP!','sp');}
+
+  // Ward drum passive bonus
+  const dmgBonus=(p.wardDrumTurns>0?p.wardDrumBonus:0)+(cs&&cs.roundBonus&&!p.roundBonusUsed?cs.roundBonus:0);
+  if(cs&&cs.roundBonus&&!p.roundBonusUsed){p.roundBonusUsed=true;}
+
   let tot=0;
-  for(let i=0;i<(act.hits||1);i++){
-    if(act.spec==='exec'){const bon=e.hp<e.maxHp*.4?Math.floor(e.maxHp*.35):0;tot+=dealDmg(e,ri(12,18)+bon);}
-    else if(act.dmg[1]>0)tot+=dealDmg(e,ri(act.dmg[0],act.dmg[1]));
+  const hits=act.hits||1;
+  const pierce=!!(cs&&(cs.firstPierce&&C.round===1&&!p.pierceDone));
+  if(pierce&&act.dmg[1]>0)p.pierceDone=true;
+
+  for(let i=0;i<hits;i++){
+    let base=0;
+    if(act.spec==='exec'){
+      const thresh=(cs&&cs.execThreshold)||0.4;
+      const bon=e.hp<e.maxHp*thresh?Math.floor(e.maxHp*.35):0;
+      base=ri(12,18)+bon;
+    } else if(act.spec==='pact'){
+      // Hellfire Pact: costs 8 HP
+      p.hp=Math.max(1,p.hp-8);
+      base=ri(act.dmg[0],act.dmg[1]);
+      clog('Hellfire Pact: you sacrifice 8 HP for power!','sp');
+    } else if(act.spec==='pierce'){
+      base=ri(act.dmg[0],act.dmg[1]);
+      tot+=dealDmg(e,base+dmgBonus,true);
+      continue;
+    } else if(act.spec==='bloodheal'){
+      // Blood Offering: lose 10 HP, fully heal
+      p.hp=Math.max(1,p.hp-10);
+      p.hp=p.maxHp;
+      clog('Blood Offering: you sacrifice 10 HP to restore full health!','sp');
+      if(e.hp<=0){endCombatFn(true);return;}
+      if(p.ap<=0)endPT();else render();
+      return;
+    } else if(act.spec==='wardrum'){
+      p.wardDrumBonus=4;p.wardDrumTurns=3;
+      clog('War Drums: +4 damage bonus for 3 turns!','sp');
+      if(p.ap<=0)endPT();else render();
+      return;
+    } else if(act.dmg[1]>0){
+      base=ri(act.dmg[0],act.dmg[1]);
+    }
+    if(base>0)tot+=dealDmg(e,base+dmgBonus,pierce);
   }
+
+  // Ward drum turn countdown
+  if(p.wardDrumTurns>0)p.wardDrumTurns--;
+
   if(tot>0)clog('You use '+act.name+' — '+tot+' dmg!','pl');
-  else clog('You use '+act.name+'.','pl');
+  else if(act.dmg[1]===0)clog('You use '+act.name+'.','pl');
+
+  // Tiefling knight hellfire edge on-hit burn
+  if(cs&&cs.onHitEffect&&tot>0)applyStatus(e,cs.onHitEffect);
+
+  // Half-orc rage stack
+  if(cs&&cs.rageStack)p.rageCount=Math.max(0,(p.rageCount||0));
+
+  // Tiefling cleric lifesteal
+  if(cs&&cs.lifesteal&&tot>0){
+    const heal=Math.floor(tot*cs.lifesteal);
+    p.hp=cl(p.hp+heal,0,p.maxHp);
+    clog('Hellfire Grace: lifesteal +'+heal+' HP.','sp');
+  }
+
+  // Halfling rogue kill heal
+  if(cs&&cs.killHeal&&e.hp<=0){
+    p.hp=cl(p.hp+cs.killHeal,0,p.maxHp);
+    clog('Soul Thief: absorbed '+cs.killHeal+' HP from the kill!','sp');
+  }
+
   if(act.eff){applyStatus(act.eff.tg==='self'?p:e,act.eff);}
+  // Tiefling bard cursed verse: mockery also burns
+  if(cs&&cs.mockeryBurn&&act.id==='c'){applyStatus(e,{t:'burn',v:3,turns:3,tg:'enemy'});}
+
+  // Bard orc crescendo buff when low HP
+  if(cs&&cs.crescendoBuff&&act.id==='d'&&p.hp/p.maxHp<.5){
+    const extra=dealDmg(e,cs.crescendoBuff);
+    clog('Bloodsong: low HP bonus +'+extra+' extra dmg!','sp');
+  }
+
+  // Song cleanse for elf bard
+  if(cs&&cs.songCleanse&&act.id==='b'){
+    p.statuses=[];clog('Elven Hymn: all status effects cleansed!','sp');
+  }
+
   if(e.hp<=0){endCombatFn(true);return;}
+  checkBossPhase();
   if(p.ap<=0)endPT();else render();
 }
+
 function endPT(){
-  tickSt(C.enemy).forEach(m=>clog(m.t,m.c));
-  if(C.enemy.hp<=0){endCombatFn(true);return;}
-  C.turn='enemy';render();
+  const e=C.enemy;
+  tickSt(e).forEach(m=>clog(m.t,m.c));
+  if(e.hp<=0){endCombatFn(true);return;}
+  checkBossPhase();
+  C.turn='enemy';
+  // Reset round bonuses
+  C.player.roundBonusUsed=false;
+  render();
   setTimeout(doET,850);
 }
+
 function doET(){
   const p=C.player,e=C.enemy;
   e.ap=e.maxAp;
-  if(e.statuses.find(s=>s.type==='stun')){clog(e.name+' is stunned!','sp');e.statuses=e.statuses.filter(s=>s.type!=='stun');endET();return;}
+
+  // Elf knight parry chance
+  const cs=p.comboSkill;
+  if(e.statuses.find(s=>s.type==='stun')){
+    clog(e.name+' is stunned!','sp');
+    e.statuses=e.statuses.filter(s=>s.type!=='stun');
+    endET();return;
+  }
+
+  // Boss phase 2: use phase 2 actions more
+  const availPool=e.isBoss&&C.bossPhaseTwo
+    ? e.actions
+    : e.actions.filter(a=>!a.phaseTwo);
+
   while(e.ap>0){
-    const avail=e.actions.filter(a=>a.cost<=e.ap);
+    const avail=availPool.filter(a=>a.cost<=e.ap);
     if(!avail.length)break;
     const act=avail[ri(0,avail.length-1)];
     e.ap-=act.cost;
     let tot=0;
-    for(let i=0;i<(act.hits||1);i++){if(act.dmg&&act.dmg[1]>0)tot+=dealDmg(p,ri(act.dmg[0],act.dmg[1]));}
-    if(tot>0)clog(e.name+' uses '+act.name+' — '+tot+' dmg!','en');
-    else clog(e.name+' uses '+act.name+'.','en');
+    for(let i=0;i<(act.hits||1);i++){
+      if(act.dmg&&act.dmg[1]>0){
+        const raw=ri(act.dmg[0],act.dmg[1]);
+        // Elf knight parry
+        if(cs&&cs.parryChance&&Math.random()<cs.parryChance){
+          clog('Moonblade Guard: perfect parry!','sp');
+          continue;
+        }
+        // Halfling knight lucky dodge
+        if(cs&&cs.dodgeChance&&Math.random()<cs.dodgeChance){
+          clog('Lucky Parry: the hit misses entirely!','sp');
+          continue;
+        }
+        // Dwarf knight free shield (absorbed once)
+        if(cs&&cs.freeShield&&!C.freeShieldUsed){
+          C.freeShieldUsed=true;
+          clog('Runeguard: ancient runes absorb the blow!','sp');
+          continue;
+        }
+        tot+=dealDmg(p,raw);
+      }
+    }
+    if(tot>0){
+      clog(e.name+' uses '+act.name+' — '+tot+' dmg!',(e.isBoss?'boss':'en'));
+      // Half-orc rage: each hit taken adds to rage
+      if(cs&&cs.rageStack){
+        p.rageCount=Math.min((p.rageCount||0)+1,3);
+        clog('Blood Feud rage: '+(p.rageCount*3)+' bonus dmg stacked.','sp');
+      }
+    } else if(act.dmg&&act.dmg[0]===0){
+      clog(e.name+' uses '+act.name+'.',(e.isBoss?'boss':'en'));
+    }
     if(act.eff)applyStatus(act.eff.tg==='self'?e:p,act.eff);
     if(p.hp<=0){endCombatFn(false);return;}
   }
   endET();
 }
+
 function endET(){
   tickSt(C.player).forEach(m=>clog(m.t,m.c));
   if(C.player.hp<=0){endCombatFn(false);return;}
@@ -336,25 +814,29 @@ function endET(){
   clog('— Round '+C.round+' —','sp');
   render();
 }
+
 function endCombatFn(won){
   C.done=true;C.won=won;
+  const e=C.enemy;
   if(won){
-    clog('Victory! '+C.enemy.name+' falls.','sp');
-    const l=C.enemy.loot;
-    if(l){J.gold=cl(J.gold+l.g,0,999);J.health=cl(J.health+l.h,0,100);J.food=cl(J.food+l.f,0,120);J.log.push('Combat won! '+l.s);}
+    const tag=e.isBoss?'boss':'sp';
+    clog((e.isBoss?'⚔ THE DRAGON KNIGHT IS SLAIN! GLORY!':'Victory! '+e.name+' falls.'),tag);
+    const l=e.loot;
+    if(l){J.gold=cl(J.gold+l.g,0,999);J.health=cl(J.health+l.h,0,100);J.food=cl(J.food+l.f,0,120);J.log.push((e.isBoss?'BOSS SLAIN! ':'')+'Loot: '+l.s);}
   } else {
-    clog('You were defeated!','en');
+    clog(e.isBoss?'The Dragon Knight defeats you. The gate falls.':'You were defeated!','en');
     J.health=Math.max(0,J.health-30);J.morale=Math.max(0,J.morale-20);
     J.log.push('Combat lost. Fled wounded (-30 HP, -20 morale).');
   }
   render();
 }
 
+/* ─── Render helpers ─── */
 function combUnit(u,showAP){
   const pct=Math.round(u.hp/u.maxHp*100),col=hc(u.hp,u.maxHp);
   let stags='';
   if(u.shield>0&&u.shield<99)stags+='<span class="stag sb">Shield '+u.shield+'</span> ';
-  if(u.shield>=99)stags+='<span class="stag sb">Dodge ready</span> ';
+  if(u.shield>=99)stags+='<span class="stag sb">Dodge</span> ';
   u.statuses.forEach(s=>{
     if(s.type==='burn')stags+='<span class="stag sy">Burn '+s.turns+'t</span> ';
     if(s.type==='bleed')stags+='<span class="stag sr">Bleed '+s.turns+'t</span> ';
@@ -363,12 +845,52 @@ function combUnit(u,showAP){
   });
   let apH='';
   if(showAP)for(let i=0;i<u.maxAp;i++)apH+='<div class="apip'+(i<u.ap?' on':'')+'"></div>';
-  return'<div class="comb"><div class="cname">'+u.icon+' '+u.name+'</div>'
+  const bossClass=u.isBoss?' boss-card':'';
+  const phClass=u.isBoss?' boss-ph':'';
+  const nameClass=u.isBoss?' boss-name':'';
+  return'<div class="comb'+bossClass+'">'
+    +'<img src="'+u.imgSrc+'" alt="'+u.name+'" class="comb-portrait" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
+    +'<div class="comb-portrait-ph'+phClass+'" style="display:none">'+u.icon+'</div>'
+    +'<div class="comb-body">'
+    +'<div class="cname'+nameClass+'">'+u.name+(u.isBoss?' ⚔':'')+'</div>'
     +'<div style="font-size:11px;color:#888780;margin-bottom:3px;display:flex;justify-content:space-between"><span>HP</span><span>'+Math.round(u.hp)+'/'+u.maxHp+'</span></div>'
-    +'<div class="hpt"><div class="hpf" style="width:'+pct+'%;background:'+col+'"></div></div>'
+    +'<div class="hpt"><div class="hpf" style="width:'+pct+'%;background:'+(u.isBoss?'#a32020':col)+'"></div></div>'
     +(showAP?'<div class="arow">'+apH+'</div>':'')
     +'<div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:3px;min-height:16px">'+stags+'</div>'
+    +'</div></div>';
+}
+
+function selCard(item,key){
+  const on=sel[key]===item.id;
+  // Show combo skill hint if this is a class card and race is already selected
+  let skillHint='';
+  if(key==='cls'&&sel.race){
+    const sk=item.comboSkills&&item.comboSkills[sel.race];
+    if(sk)skillHint='<div class="sk">✦ '+sk.name+': '+sk.desc.slice(0,40)+(sk.desc.length>40?'...':'')+'</div>';
+  }
+  return'<div class="sel-card'+(on?' on':'')+'" onclick="sel[\''+key+'\']=\''+item.id+'\';render()">'
+    +'<div class="sel-card-img-ph">'+item.icon+'</div>'
+    +'<div class="sel-card-body"><div class="nm">'+item.name+'</div><div class="ds">'+item.desc+'</div>'+skillHint+'</div>'
     +'</div>';
+}
+
+function charPreview(){
+  if(!sel.race||!sel.cls)return'';
+  const r=RACES.find(x=>x.id===sel.race),c=CLASSES.find(x=>x.id===sel.cls);
+  const cs=c.comboSkills[sel.race];
+  const traits=[...(r.travelTraits||[]),...(c.travelTraits||[])];
+  const src=charImgSrc(sel.race,sel.cls);
+  return'<div class="preview-panel">'
+    +'<img src="'+src+'" alt="'+r.name+' '+c.name+'" class="preview-img" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
+    +'<div class="preview-img-ph" style="display:none">'+r.icon+' '+c.icon+'</div>'
+    +'<div class="preview-body">'
+    +'<div style="font-size:14px;font-weight:600">'+r.name+' '+c.name+'</div>'
+    +(sel.prof?'<div style="font-size:12px;color:#888780">· '+PROFESSIONS.find(x=>x.id===sel.prof).name+'</div>':'')
+    +(cs?'<div class="preview-skill">✦ Combo Skill: <strong>'+cs.name+'</strong> — '+cs.desc+'</div>':'')
+    +'<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">'
+    +traits.map(t=>'<span class="trait-badge">'+t+'</span>').join('')
+    +'</div>'
+    +'</div></div>';
 }
 
 function miniMap(){
@@ -377,12 +899,9 @@ function miniMap(){
   return'<svg width="100%" viewBox="0 0 360 310" style="display:block;border-radius:8px;border:1px solid #e0ddd6;margin-bottom:10px">'
     +'<rect width="360" height="310" fill="#b8cfe8" opacity=".12"/>'
     +'<path d="M40,35 Q90,18 160,28 Q240,22 295,35 Q335,42 345,75 Q355,115 350,170 Q342,215 320,248 Q295,275 255,288 Q210,298 165,295 Q120,298 90,282 Q55,265 35,232 Q18,198 15,155 Q12,105 40,35Z" fill="#d4c9a8" opacity=".65"/>'
-    +'<polygon points="165,32 158,55 172,55" fill="#9e9078"/>'
-    +'<polygon points="180,28 172,52 188,52" fill="#b4a888"/>'
-    +'<polygon points="195,30 187,53 203,53" fill="#9e9078"/>'
-    +'<polygon points="210,28 202,52 218,52" fill="#b4a888"/>'
-    +'<polygon points="180,28 175,40 185,40" fill="#e8e4d8"/>'
-    +'<polygon points="195,30 190,42 200,42" fill="#e8e4d8"/>'
+    +'<polygon points="165,32 158,55 172,55" fill="#9e9078"/><polygon points="180,28 172,52 188,52" fill="#b4a888"/>'
+    +'<polygon points="195,30 187,53 203,53" fill="#9e9078"/><polygon points="210,28 202,52 218,52" fill="#b4a888"/>'
+    +'<polygon points="180,28 175,40 185,40" fill="#e8e4d8"/><polygon points="195,30 190,42 200,42" fill="#e8e4d8"/>'
     +'<circle cx="308" cy="118" r="17" fill="#3a6b2e"/><circle cx="328" cy="108" r="13" fill="#2e5525"/>'
     +'<circle cx="345" cy="120" r="15" fill="#3a6b2e"/><circle cx="322" cy="134" r="13" fill="#4a7a38"/>'
     +'<path d="M195,52 Q202,80 198,115 Q194,145 188,175 Q183,200 178,240" fill="none" stroke="#7aa8c8" stroke-width="1.5" opacity=".45"/>'
@@ -397,11 +916,12 @@ function miniMap(){
     +'<circle cx="196" cy="195" r="6" fill="#e24b4a" opacity=".25"/>'
     +'<circle cx="196" cy="195" r="4" fill="#e24b4a"/>'
     +'<circle cx="'+px+'" cy="'+py+'" r="5" fill="#eeedfe" stroke="#534ab7" stroke-width="1.5"/>'
-    +'<rect x="4" y="4" width="78" height="17" rx="4" fill="white" opacity=".8"/>'
+    +'<rect x="4" y="4" width="86" height="17" rx="4" fill="white" opacity=".8"/>'
     +'<text x="9" y="15" font-size="9" font-family="system-ui" fill="#888780">Day '+J.day+' · '+prog+'% there</text>'
     +'</svg>';
 }
 
+/* ══════════════════════════════════════════════ SCREENS ══════════════════════════════════════════════ */
 const SCREENS={
   title(){
     return'<div style="text-align:center;padding:1.5rem 0 1rem">'
@@ -411,31 +931,55 @@ const SCREENS={
       +'<button class="btn btnp" onclick="go(\'build\')">Begin Your Flight</button>'
       +'</div>';
   },
+
   build(){
-    const g3=(items,key)=>'<div class="g3">'+items.map(i=>'<div class="sel-card'+(sel[key]===i.id?' on':'')+'" onclick="sel[\''+key+'\']=\''+i.id+'\';render()"><div class="nm">'+i.name+'</div><div class="ds">'+i.desc+'</div></div>').join('')+'</div>';
     const ok=sel.race&&sel.cls&&sel.prof&&sel.dest;
-    return'<div class="section"><h3>Race</h3>'+g3(RACES,'race')+'</div>'
-      +'<div class="section"><h3>Class</h3>'+g3(CLASSES,'cls')+'</div>'
-      +'<div class="section"><h3>Profession</h3>'+g3(PROFESSIONS,'prof')+'</div>'
+    return'<div class="section"><h3>Race</h3><div class="g3">'+RACES.map(i=>selCard(i,'race')).join('')+'</div></div>'
+      +'<div class="section"><h3>Class <span style="font-size:11px;color:#534ab7;font-weight:400">— select race first to see your combo skill</span></h3>'
+      +'<div class="g3">'+CLASSES.map(i=>selCard(i,'cls')).join('')+'</div></div>'
+      +charPreview()
+      +'<div class="section"><h3>Profession</h3>'
+      +'<div class="g3">'+PROFESSIONS.map(i=>{
+        const on=sel.prof===i.id;
+        return'<div class="sel-card'+(on?' on':'')+'" onclick="sel.prof=\''+i.id+'\';render()">'
+          +'<div class="sel-card-img-ph">'+i.icon+'</div>'
+          +'<div class="sel-card-body"><div class="nm">'+i.name+'</div><div class="ds">'+i.desc+'</div></div>'
+          +'</div>';
+      }).join('')+'</div></div>'
       +'<div class="section"><h3>Destination</h3>'
       +DESTINATIONS.map(d=>'<div class="dcrd'+(sel.dest===d.id?' on':'')+'" onclick="sel.dest=\''+d.id+'\';render()">'
         +'<div style="font-size:20px">'+d.icon+'</div>'
         +'<div><div style="font-size:13px;font-weight:600">'+d.name+' <span style="font-size:10px;padding:2px 6px;border-radius:5px;background:'+d.color+'22;color:'+d.color+'">'+d.terrain+'</span></div>'
-        +'<div style="font-size:11px;color:#888780;margin-top:2px">Dist '+'★'.repeat(d.dist)+'☆'.repeat(7-d.dist)+' · Danger <span style="color:#a32d2d">'+'★'.repeat(d.danger)+'☆'.repeat(5-d.danger)+'</span></div></div>'
-        +'</div>').join('')
-      +'</div>'
+        +'<div style="font-size:11px;color:#888780;margin-top:2px">Dist '+'★'.repeat(d.dist)+'☆'.repeat(7-d.dist)+' · Danger <span style="color:#a32d2d">'+'★'.repeat(d.danger)+'☆'.repeat(5-d.danger)+'</span></div>'
+        +'</div></div>').join('')+'</div>'
       +'<div style="text-align:center"><button class="btn btnp" '+(ok?'':'disabled ')+'onclick="'+(ok?'initJ();go(\'travel\')':'')+'">'
       +'Begin the Flight</button>'
       +(!ok?'<div style="font-size:11px;color:#888780;margin-top:6px">Select all four to continue.</div>':'')
       +'</div>';
   },
+
   travel(){
     const prog=Math.round((1-J.daysLeft/J.maxDays)*100),ev=J.ev;
     let evH='';
     if(ev){
-      if(ev.type==='combat'){
-        evH='<div><div class="ebox combat"><strong>⚔ Ambush!</strong> A '+ev.enemy.icon+' <strong>'+ev.enemy.name+'</strong> blocks your path!</div>'
+      if(ev.type==='boss'){
+        const e=ev.enemy;
+        evH='<div>'
+          +'<div class="boss-banner">🐲 <strong>THE DRAGON KNIGHT</strong> stands at the gate ahead.<br>'
+          +'A legendary warrior clad in dragonscale. He does not move. He waits for you.<br>'
+          +'<em style="font-size:11px;opacity:.7">Boss encounter — 65 HP · 3 AP · Two phases</em></div>'
           +'<div style="display:flex;gap:8px;flex-wrap:wrap">'
+          +'<button class="btn btnboss" onclick="enterCombat()">Face the Dragon Knight</button>'
+          +'<button class="btn" onclick="fleeFromCombat()">Flee (−20 HP, −15 gold)</button>'
+          +'</div></div>';
+      } else if(ev.type==='combat'){
+        const e=ev.enemy;
+        evH='<div><div class="ebox combat" style="display:flex;gap:12px;align-items:center">'
+          +'<img src="'+enemyImgSrc(e.imgKey)+'" alt="'+e.name+'" class="ambush-img" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
+          +'<div class="ambush-img-ph" style="display:none">'+e.icon+'</div>'
+          +'<div><strong>⚔ Ambush!</strong><br>A <strong>'+e.name+'</strong> bars your path! ('+e.hp+' HP · '+e.ap+' AP)</div>'
+          +'</div>'
+          +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">'
           +'<button class="btn btnd" onclick="enterCombat()">Fight</button>'
           +'<button class="btn" onclick="fleeFromCombat()">Flee (−20 HP, −15 gold)</button>'
           +'</div></div>';
@@ -448,24 +992,29 @@ const SCREENS={
     } else {
       evH='<button class="btn btnp" style="width:100%;padding:11px" onclick="advDay();if(checkEnd())go(\'end\');else go(\'travel\')">Continue the Road →</button>';
     }
+    // Combo skill badge during travel
+    const cs=J.comboSkill;
+    const csBadge=cs?'<span class="trait-badge" style="color:#534ab7;border-color:#534ab7">✦ '+cs.name+'</span>':'';
     return miniMap()
-      +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px">'
+      +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">'
       +'<h3 style="margin:0">Day '+J.day+' — '+J.dobj.icon+' '+J.dobj.name+'</h3>'
       +'<span style="font-size:12px;color:#888780">'+J.daysLeft+' days left</span></div>'
+      +(csBadge?'<div style="margin-bottom:7px">'+csBadge+'</div>':'')
       +'<div class="prog-bar"><div class="prog-fill" style="width:'+prog+'%"></div></div>'
       +'<div class="card">'+sbar('❤ Health',J.health,100)+sbar('🍖 Food',J.food,120)+sbar('🪙 Gold',J.gold,100)+sbar('💙 Morale',J.morale,100)+'</div>'
       +'<div style="margin-bottom:12px">'+evH+'</div>'
       +'<h3>Journey Log</h3>'
       +'<div class="card" style="max-height:100px;overflow-y:auto;padding:8px 12px">'
-      +[...J.log].reverse().map(l=>'<div class="loge">'+l+'</div>').join('')
-      +'</div>';
+      +[...J.log].reverse().map(l=>'<div class="loge">'+l+'</div>').join('')+'</div>';
   },
+
   combat(){
     const p=C.player,e=C.enemy;
+    const cs=p.comboSkill;
     let actH='';
     if(C.done){
       actH='<div style="text-align:center;padding:8px 0">'
-        +'<div style="font-size:15px;font-weight:600;margin-bottom:4px">'+(C.won?'Victory!':'Defeated')+'</div>'
+        +'<div style="font-size:15px;font-weight:600;margin-bottom:4px">'+(C.won?(e.isBoss?'⚔ The Dragon Knight Falls!':'Victory!'):'Defeated')+'</div>'
         +'<div style="font-size:13px;color:#888780;margin-bottom:10px">'+(C.won?'Loot: '+(e.loot&&e.loot.s||'nothing'):'You flee with wounds.')+'</div>'
         +'<button class="btn btnp" onclick="afterCombat()">Continue Journey →</button>'
         +'</div>';
@@ -475,39 +1024,47 @@ const SCREENS={
         actH='<div style="font-size:13px;color:#791f1f;padding:5px 0">Stunned — losing your turn...</div>';
         setTimeout(()=>{p.statuses=p.statuses.filter(s=>s.type!=='stun');endPT();},900);
       } else {
+        const rageBonus=cs&&cs.rageStack?(p.rageCount||0)*3:0;
         actH='<div class="g2">'+p.actions.map(a=>{
           const ok=p.ap>=a.cost;
-          const dt=a.dmg&&a.dmg[1]>0?a.dmg[0]+'–'+a.dmg[1]+' · ':'';
-          return'<button class="abt" onclick="doAction(\''+a.id+'\')" '+(ok?'':'disabled')+'>'
-            +'<span class="an">'+a.name+'</span>'
+          const dt=a.dmg&&a.dmg[1]>0?a.dmg[0]+'–'+(a.dmg[1]+rageBonus)+' · ':'';
+          const isCombo=a.id==='xs';
+          return'<button class="abt'+(isCombo?' combo-skill':'')+'" onclick="doAction(\''+a.id+'\')" '+(ok?'':'disabled')+'>'
+            +'<span class="an">'+(isCombo?'✦ ':'')+a.name+'</span>'
             +'<span class="am">'+dt+a.cost+' AP · '+a.desc+'</span>'
             +'</button>';
         }).join('')+'</div>'
+        +(rageBonus?'<div style="font-size:11px;color:#a32d2d;margin-top:4px">⚡ Blood Feud rage: +'+rageBonus+' dmg on all attacks</div>':'')
         +'<button class="btn" style="width:100%;margin-top:7px;font-size:12px" onclick="endPT()">End turn →</button>';
       }
     } else {
-      actH='<div style="font-size:13px;color:#888780;text-align:center;padding:6px 0">Enemy is acting…</div>';
+      actH='<div style="font-size:13px;color:#888780;text-align:center;padding:6px 0">'+(e.isBoss?'The Dragon Knight moves...':'Enemy is acting…')+'</div>';
     }
+    const bossPhaseLabel=C.bossPhaseTwo?'<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#7a1a1a;color:#fde8e8;margin-left:6px">Phase II — Enraged</span>':'';
     return'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
       +'<span style="font-size:12px;color:#888780">Round '+C.round+'</span>'
       +'<span style="font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;background:'+(C.turn==='player'?'#eeedfe':'#fcebeb')+';color:'+(C.turn==='player'?'#3c3489':'#791f1f')+'">'+(C.turn==='player'?'Your turn':'Enemy turn')+'</span>'
+      +bossPhaseLabel
       +'</div>'
       +'<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;margin-bottom:10px;align-items:start">'
       +combUnit(p,true)
       +'<div style="display:flex;align-items:center;padding:0 4px;color:#888780;font-size:12px">VS</div>'
-      +combUnit(e,false)
-      +'</div>'
+      +combUnit(e,false)+'</div>'
       +actH
-      +'<div class="clog">'+C.log.slice(0,12).map(l=>'<div class="cl '+l.c+'">'+l.t+'</div>').join('')+'</div>';
+      +'<div class="clog">'+C.log.slice(0,14).map(l=>'<div class="cl '+l.c+'">'+l.t+'</div>').join('')+'</div>';
   },
+
   end(){
     const won=J.arrived,d=J.dobj;
-    const score=won?Math.round((J.health+J.morale+J.food)*.4+J.gold*.2):0;
-    const title=won?'You have escaped.':'The road claims another.';
+    const slayedBoss=J.log.some(l=>l.includes('BOSS SLAIN'));
+    const score=won?Math.round((J.health+J.morale+J.food)*.4+J.gold*.2+(slayedBoss?50:0)):0;
+    const title=won?(slayedBoss?'The Dragon Knight is dead. You are free.':'You have escaped.'):'The road claims another.';
     const msg=won?'After '+J.day+' days of flight, you reach '+d.name+' '+d.icon+'.':'On day '+J.day+', your health or spirit gave out. The darkness of Ashenmoor follows.';
     return'<div style="text-align:center;padding:1.5rem 0">'
-      +'<div style="font-size:40px;margin-bottom:10px">'+(won?d.icon:'💀')+'</div>'
+      +(won?'<img src="'+J.charImg+'" alt="character" style="width:80px;height:80px;object-fit:cover;border-radius:50%;margin-bottom:12px;border:2px solid '+(slayedBoss?'#7a1a1a':'#e0ddd6')+'" onerror="this.style.display=\'none\'">'
+           :'<div style="font-size:40px;margin-bottom:10px">💀</div>')
       +'<h2 style="font-size:22px;margin-bottom:6px">'+title+'</h2>'
+      +(slayedBoss?'<div style="font-size:13px;color:#7a1a1a;margin-bottom:8px">⚔ Dragon Knight Slayer +50 bonus score</div>':'')
       +'<p style="margin-bottom:1.2rem;max-width:400px;margin-left:auto;margin-right:auto">'+msg+'</p>'
       +'<div style="display:inline-flex;gap:14px;background:#f1efe8;border-radius:12px;padding:11px 18px;margin-bottom:1.2rem">'
       +'<div style="text-align:center"><div style="font-size:11px;color:#888780">Days</div><div style="font-size:18px;font-weight:600">'+J.day+'</div></div>'
